@@ -56,21 +56,14 @@ return {
          vim.keymap.set("n", "fp", lua .. ".grep_project" .. o, silent)     
 
          _G.fzf_dirs = function(opts)
-            local fzf_lua = require'fzf-lua'
-            opts = opts or {}
-            opts.prompt = "Directories> "
-            opts.fn_transform = function(x)
-               return fzf_lua.utils.ansi_codes.magenta(x)
-            end
-            opts.actions = {
-               ['default'] = function(selected)
-                  vim.cmd("cd " .. selected[1])
-               end
-            }
-            fzf_lua.fzf_exec("fd --hidden --type d", opts)
+            _G.fzf_cd_with("fd --hidden --type d", opts)
          end
 
          _G.fzf_zoxide_dirs = function(opts)
+            _G.fzf_cd_with("zoxide query --list | head -30", opts)
+         end
+
+         _G.fzf_cd_with = function(command, opts)
             local fzf_lua = require'fzf-lua'
             opts = opts or {}
             opts.prompt = "Zoxide> "
@@ -82,7 +75,7 @@ return {
                   vim.cmd("cd " .. selected[1])
                end
             }
-            fzf_lua.fzf_exec("zoxide query --list | head -30", opts)
+            fzf_lua.fzf_exec(command, opts)
          end
 
          -- map our provider to a user command ':Directories'
