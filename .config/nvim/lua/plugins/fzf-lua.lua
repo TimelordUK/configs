@@ -46,11 +46,14 @@ return {
          })
          local lua="<cmd>lua require('fzf-lua')"
          local o ="({ resume = true })<CR>"
-         vim.keymap.set("n", "fb", lua .. ".grep_curbuf" .. o, { silent = true })
-         vim.keymap.set("n", "fo", lua .. ".files({ prompt='.config> ', cwd='~/.config'})<CR>", { silent = true })
-         vim.keymap.set("n", "fh", lua .. ".command_history" .. o, { silent = true })          
-         vim.keymap.set("n", "fm", lua .. ".git_commits" .. o, { silent = true })     
-         vim.keymap.set("n", "fp", lua .. ".grep_project" .. o, { silent = true })     
+         local silent = { silent = true }
+
+         vim.keymap.set("n", "ff", lua .. ".files" .. o, silent)
+         vim.keymap.set("n", "fb", lua .. ".grep_curbuf" .. o, silent)
+         vim.keymap.set("n", "fo", lua .. ".files({ prompt='.config> ', cwd='~/.config'})<CR>", silent)
+         vim.keymap.set("n", "fh", lua .. ".command_history" .. o, silent)          
+         vim.keymap.set("n", "fm", lua .. ".git_commits" .. o, silent)     
+         vim.keymap.set("n", "fp", lua .. ".grep_project" .. o, silent)     
       end
    }
 }
