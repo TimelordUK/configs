@@ -48,9 +48,9 @@ return {
          local o ="({ resume = true })<CR>"
          local silent = { silent = true }
 
-         vim.keymap.set("n", "ff", lua .. ".files" .. o, silent)
+         vim.keymap.set("n", "ff", lua .. ".files({})<CR>" , silent)
          vim.keymap.set("n", "fb", lua .. ".grep_curbuf" .. o, silent)
-         vim.keymap.set("n", "fo", lua .. ".files({ prompt='.config> ', cwd='~/.config'})<CR>", silent)
+         vim.keymap.set("n", "fo", lua .. ".files({cwd='~/.config'})<CR>", silent)
          vim.keymap.set("n", "fh", lua .. ".command_history" .. o, silent)          
          vim.keymap.set("n", "fm", lua .. ".git_commits" .. o, silent)     
          vim.keymap.set("n", "fp", lua .. ".grep_project" .. o, silent)     
