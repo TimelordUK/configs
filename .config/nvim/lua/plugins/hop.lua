@@ -21,6 +21,9 @@ return {
       vim.keymap.set('', 'T', function()
          hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
       end, {remap=true})
+
+      vim.keymap.set('n', '<leader>hw', '<cmd>HopWord<CR>')
+      vim.keymap.set('n', '<leader>hl', '<cmd>HopLine<CR>')
    end
 }
 
