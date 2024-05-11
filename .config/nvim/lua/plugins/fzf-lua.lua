@@ -32,8 +32,8 @@ return {
                   ["<F4>"]     = "toggle-preview",
                   ["<F5>"]     = "toggle-preview-ccw",
                   ["<F6>"]     = "toggle-preview-cw",
-                  ["<C-d>"]    = "preview-page-down",
-                  ["<C-u>"]    = "preview-page-up",
+                  ["<S-h>"]    = "preview-page-down",
+                  ["<S-l>"]    = "preview-page-up",
                   ["<S-left>"] = "preview-page-reset",
                },
                fzf = {

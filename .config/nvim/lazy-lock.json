@@ -2,7 +2,7 @@
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "barbar.nvim": { "branch": "master", "commit": "88fe247ba6453b6ac422f26eb047acaac1a6000a" },
   "fzf": { "branch": "master", "commit": "07880ca4415009d7a151d262bc5ac62f8b6dc719" },
-  "fzf-lua": { "branch": "main", "commit": "0a36172c5a25070b4d38a9b3a42261f26b7a4074" },
+  "fzf-lua": { "branch": "main", "commit": "6ccbe4c0ffc593423d21d99b8395d846fe579c5a" },
   "gitsigns.nvim": { "branch": "main", "commit": "805610a9393fa231f2c2b49cb521bfa413fadb3d" },
   "gruvbox.nvim": { "branch": "main", "commit": "c442515506caa166118e157980f62a9ac24fa8c3" },
   "hop.nvim": { "branch": "master", "commit": "059e88e9dcaad3280ea1fd5c757f6904f274aed5" },
