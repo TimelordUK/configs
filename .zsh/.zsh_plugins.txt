@@ -1,0 +1,10 @@
+# add fish-like features
+Aloxaf/fzf-tab
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-completions
+jeffreytse/zsh-vi-mode
+lukechilds/zsh-nvm
+romkatv/powerlevel10k
+
