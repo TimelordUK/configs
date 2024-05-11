@@ -32,8 +32,8 @@ return {
                   ["<F4>"]     = "toggle-preview",
                   ["<F5>"]     = "toggle-preview-ccw",
                   ["<F6>"]     = "toggle-preview-cw",
-                  ["<S-h>"]    = "preview-page-down",
-                  ["<S-l>"]    = "preview-page-up",
+                  ["<A-j>"]    = "preview-page-down",
+                  ["<A-k>"]    = "preview-page-up",
                   ["<S-left>"] = "preview-page-reset",
                },
                fzf = {
@@ -70,13 +70,28 @@ return {
             fzf_lua.fzf_exec("fd --hidden --type d", opts)
          end
 
+         _G.fzf_zoxide_dirs = function(opts)
+            local fzf_lua = require'fzf-lua'
+            opts = opts or {}
+            opts.prompt = "Zoxide> "
+            opts.fn_transform = function(x)
+               return fzf_lua.utils.ansi_codes.yellow(x)
+            end
+            opts.actions = {
+               ['default'] = function(selected)
+                  vim.cmd("cd " .. selected[1])
+               end
+            }
+            fzf_lua.fzf_exec("zoxide query --list | head -30", opts)
+         end
+
          -- map our provider to a user command ':Directories'
          vim.cmd([[command! -nargs=* Directories lua _G.fzf_dirs()]])
-
+         vim.cmd([[command! -nargs=* Zoxide lua _G.fzf_zoxide_dirs()]])
          -- or to a keybind, both below are (sort of) equal
          -- vim.keymap.set('n', '<C-k>', _G.fzf_dirs)
          vim.keymap.set('n', '<C-k>', '<cmd>lua _G.fzf_dirs()<CR>')
-
+         vim.keymap.set('n', '<C-z>', '<cmd>lua _G.fzf_zoxide_dirs()<CR>')
          -- We can also send call options directly
          -- :lua _G.fzf_dirs({ cwd = <other directory> })
       end
