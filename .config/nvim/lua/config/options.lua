@@ -12,7 +12,7 @@ vim.opt.expandtab = true
 
 vim.g.mapleader = "\\"
 vim.opt.mouse = ""
-vim.api.nvim_set_option("clipboard", "unnamed")
+-- vim.api.nvim_set_option("clipboard", "unnamed")
 
 -- vim.opt.foldmethod = "expr"
 -- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
