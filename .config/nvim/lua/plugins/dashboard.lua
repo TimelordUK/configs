@@ -9,6 +9,7 @@ return {
             week_header = {
                enable = true,
             },
+            footer = {}, -- footer
             shortcut = {
                { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
                {
