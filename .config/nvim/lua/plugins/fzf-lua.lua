@@ -3,9 +3,7 @@ return {
    -- optional for icon support
    dependencies = { 'nvim-tree/nvim-web-devicons' },
    config = function()
-      -- calling `setup` is optional for customization
-      require("fzf-lua").setup(
-      {
+   local options = {
          'default',
          winopts = 
          {
@@ -15,7 +13,7 @@ return {
                -- default uses the 'builtin' previewer
                border         = 'border',        -- border|noborder, applies only to
                wrap           = 'wrap',        -- wrap|nowrap
-               layout         = 'flex',          -- horizontal|vertical|flex
+               layout         = 'vertical',          -- horizontal|vertical|flex
                -- native fzf previewers (bat/cat/git/etc)
                vertical       = 'down:45%',      -- up|down:size
                horizontal     = 'right:60%',     -- right|left:size
@@ -42,13 +40,20 @@ return {
                ["ctrl-q"] = "select-all+accept",
             }
          },
-      })
+      }
+      -- calling `setup` is optional for customization
+      require("fzf-lua").setup(options)
       local lua="<cmd>lua require('fzf-lua')"
       local o ="({ resume = true })<CR>"
       local silent = { silent = true }
 
+      _G.fzf_fb = function(opts)
+         local fzf = require('fzf-lua')
+         fzf.setup()
+         fzf.grep_curbuf({})
+      end
+
       vim.keymap.set("n", "ff", lua .. ".files({})<CR>" , silent)
-      vim.keymap.set("n", "fb", lua .. ".grep_curbuf" .. o, silent)
       vim.keymap.set("n", "fo", lua .. ".files({cwd='~/.config'})<CR>", silent)
       vim.keymap.set("n", "fh", lua .. ".command_history" .. o, silent)          
       vim.keymap.set("n", "fm", lua .. ".git_commits" .. o, silent)     
@@ -84,6 +89,7 @@ return {
       -- vim.keymap.set('n', '<C-k>', _G.fzf_dirs)
       vim.keymap.set('n', '<C-k>', '<cmd>lua _G.fzf_dirs()<CR>')
       vim.keymap.set('n', '<C-z>', '<cmd>lua _G.fzf_zoxide_dirs()<CR>')
+      vim.keymap.set("n", "fb", '<cmd>lua _G.fzf_fb()<CR>', silent)
       -- We can also send call options directly
       -- :lua _G.fzf_dirs({ cwd = <other directory> })
    end

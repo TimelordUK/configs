@@ -13,16 +13,17 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +92 ~/.zshrc
-badd +1 ~/.bash_aliases
-badd +20 ~/.tmux.conf
+badd +6 possession.lua
+badd +99 ~/.zshrc
+badd +30 ~/.bash_aliases
+badd +9 ~/.tmux.conf
 badd +1 ~/.zsh/.p10k.zsh
-badd +1 treesitter-textobjects.lua
+badd +7 fzf-lua.lua
 argglobal
 %argdel
-edit treesitter-textobjects.lua
+edit ~/.zshrc
 argglobal
-balt ~/.zshrc
+balt possession.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -32,26 +33,20 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-13,37fold
-7,38fold
-41,44fold
-45,48fold
-39,49fold
-53,64fold
-65,71fold
-72,78fold
-79,85fold
-50,86fold
-6,87fold
-5,88fold
-4,100fold
-1,101fold
+4,5fold
+13,14fold
+11,14fold
+30,39fold
+72,73fold
+75,76fold
+77,78fold
+74,79fold
 let &fdl = &fdl
-let s:l = 14 - ((13 * winheight(0) + 21) / 42)
+let s:l = 99 - ((20 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 14
+keepjumps 99
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
