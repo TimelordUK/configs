@@ -39,7 +39,7 @@ zvm_config() {
   ZVM_NORMAL_MODE_CURSOR=$ncur'\e\e]12;#a89984\a'
 }
 
-export PATH=$PATH:~/opt/local/bin:/usr/local/go/bin:$HOME/go/bin
+export PATH=$PATH:~/opt/local/bin:/usr/local/go/bin:$HOME/go/bin:$HOME/.local/bin
 export ZDOTDIR=$HOME/.zsh
 source $ZDOTDIR/.antidote/antidote.zsh
 
