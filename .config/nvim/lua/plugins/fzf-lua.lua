@@ -60,7 +60,7 @@ return {
          end
 
          _G.fzf_zoxide_dirs = function(opts)
-            _G.fzf_cd_with("zoxide query --list | head -30", opts)
+            _G.fzf_cd_with("zoxide query --list", opts)
          end
 
          _G.fzf_cd_with = function(command, opts)
