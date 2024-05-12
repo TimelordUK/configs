@@ -2,7 +2,7 @@ return {
    "nvim-telescope/telescope.nvim",
    tag = "0.1.6",
    dependencies = { "nvim-lua/plenary.nvim" },
-   init = function()
+   config = function()
       local builtin = require("telescope.builtin")
       local themes = require('telescope.themes')
       vim.keymap.set("n", "<leader>ff", builtin.find_files, {})

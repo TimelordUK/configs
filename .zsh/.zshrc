@@ -63,8 +63,6 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 fpath=(/usr/local/share/zsh-completions $HOME/.zfunc $fpath)
 
 bindkey -v
-#export TERM=screen-256color
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

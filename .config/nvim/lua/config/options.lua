@@ -12,6 +12,8 @@ vim.opt.expandtab = true
 
 vim.g.mapleader = "\\"
 vim.opt.mouse = ""
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 -- vim.api.nvim_set_option("clipboard", "unnamed")
 
 -- vim.opt.foldmethod = "expr"
