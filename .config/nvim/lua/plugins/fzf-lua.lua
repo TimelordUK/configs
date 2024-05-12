@@ -56,7 +56,20 @@ return {
                fullscreen = true,
                preview = {
                   layout         = 'vertical', 
-                  vertical       = 'down:45%',
+                  vertical       = 'up:55%',
+               }
+            },
+            keymap = {
+               builtin = {
+                  ["<A-j>"]    = "preview-page-down",
+                  ["<A-k>"]    = "preview-page-up",
+                  ["<S-left>"] = "preview-page-reset",
+               },
+               fzf = {
+                  ["ctrl-a"]  = "toggle-all",
+                  ["alt-a"] = "beginning-of-line",
+                  -- Only valid with fzf previewers (bat/cat/git/etc)
+                  ["ctrl-q"] = "select-all+accept",
                }
             }
          }
