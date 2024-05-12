@@ -3,7 +3,7 @@ return {
    -- optional for icon support
    dependencies = { 'nvim-tree/nvim-web-devicons' },
    config = function()
-   local options = {
+      local options = {
          'default',
          winopts = 
          {
@@ -13,7 +13,7 @@ return {
                -- default uses the 'builtin' previewer
                border         = 'border',        -- border|noborder, applies only to
                wrap           = 'wrap',        -- wrap|nowrap
-               layout         = 'vertical',          -- horizontal|vertical|flex
+               layout         = 'flip',          -- horizontal|vertical|flex
                -- native fzf previewers (bat/cat/git/etc)
                vertical       = 'down:45%',      -- up|down:size
                horizontal     = 'right:60%',     -- right|left:size
@@ -43,6 +43,7 @@ return {
       }
       -- calling `setup` is optional for customization
       require("fzf-lua").setup(options)
+
       local lua="<cmd>lua require('fzf-lua')"
       local o ="({ resume = true })<CR>"
       local silent = { silent = true }
@@ -50,7 +51,16 @@ return {
       _G.fzf_fb = function(opts)
          local fzf = require('fzf-lua')
          fzf.setup()
-         fzf.grep_curbuf({})
+         local opts = {
+            winopts = {
+               fullscreen = true,
+               preview = {
+                  layout         = 'vertical', 
+                  vertical       = 'down:45%',
+               }
+            }
+         }
+         fzf.grep_curbuf(opts)
       end
 
       vim.keymap.set("n", "ff", lua .. ".files({})<CR>" , silent)
