@@ -2,8 +2,8 @@ return {
    'nvimdev/dashboard-nvim',
    event = 'VimEnter',
    config = function()
-      local db =  require('dashboard')
-      db.setup({
+      local dashboard = require('dashboard')
+      dashboard.setup({
          theme = 'hyper',
          config = {
             week_header = {
@@ -24,6 +24,5 @@ return {
          },
       })
    end,
-   dependencies = { {'nvim-tree/nvim-web-devicons'}}
+   dependencies = { { 'nvim-tree/nvim-web-devicons' } }
 }
-
