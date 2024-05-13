@@ -5,19 +5,19 @@ return {
    config = function()
       local options = {
          'default',
-         winopts = 
+         winopts =
          {
             fullscreen = true,
             preview = {
                -- default     = 'bat',           -- override the default previewer?
                -- default uses the 'builtin' previewer
-               border         = 'border',        -- border|noborder, applies only to
-               wrap           = 'wrap',        -- wrap|nowrap
-               layout         = 'flip',          -- horizontal|vertical|flex
+               border       = 'border',      -- border|noborder, applies only to
+               wrap         = 'wrap',        -- wrap|nowrap
+               layout       = 'flip',        -- horizontal|vertical|flex
                -- native fzf previewers (bat/cat/git/etc)
-               vertical       = 'down:45%',      -- up|down:size
-               horizontal     = 'right:60%',     -- right|left:size
-               flip_columns   = 70,             -- #cols to switch to horizontal on flex
+               vertical     = 'down:45%',    -- up|down:size
+               horizontal   = 'right:60%',   -- right|left:size
+               flip_columns = 70,            -- #cols to switch to horizontal on flex
             },
          },
          keymap = {
@@ -34,8 +34,8 @@ return {
                ["<S-left>"] = "preview-page-reset",
             },
             fzf = {
-               ["ctrl-a"]  = "toggle-all",
-               ["alt-a"] = "beginning-of-line",
+               ["ctrl-a"] = "toggle-all",
+               ["alt-a"]  = "beginning-of-line",
                -- Only valid with fzf previewers (bat/cat/git/etc)
                ["ctrl-q"] = "select-all+accept",
             }
@@ -44,8 +44,8 @@ return {
       -- calling `setup` is optional for customization
       require("fzf-lua").setup(options)
 
-      local lua="<cmd>lua require('fzf-lua')"
-      local o ="({ resume = true })<CR>"
+      local lua = "<cmd>lua require('fzf-lua')"
+      local o = "({ resume = true })<CR>"
       local silent = { silent = true }
 
       _G.fzf_fb = function()
@@ -55,8 +55,8 @@ return {
             winopts = {
                fullscreen = true,
                preview = {
-                  layout         = 'vertical',
-                  vertical       = 'up:55%',
+                  layout   = 'vertical',
+                  vertical = 'up:55%',
                }
             },
             keymap = {
@@ -66,8 +66,8 @@ return {
                   ["<S-left>"] = "preview-page-reset",
                },
                fzf = {
-                  ["ctrl-a"]  = "toggle-all",
-                  ["alt-a"] = "beginning-of-line",
+                  ["ctrl-a"] = "toggle-all",
+                  ["alt-a"]  = "beginning-of-line",
                   -- Only valid with fzf previewers (bat/cat/git/etc)
                   ["ctrl-q"] = "select-all+accept",
                }
@@ -76,7 +76,7 @@ return {
          fzf.grep_curbuf(opts)
       end
 
-      vim.keymap.set("n", "ff", lua .. ".files({})<CR>" , silent)
+      vim.keymap.set("n", "ff", lua .. ".files({})<CR>", silent)
       vim.keymap.set("n", "fo", lua .. ".files({cwd='~/.config'})<CR>", silent)
       vim.keymap.set("n", "fh", lua .. ".command_history" .. o, silent)
       vim.keymap.set("n", "fm", lua .. ".git_commits" .. o, silent)
@@ -91,7 +91,7 @@ return {
       end
 
       _G.fzf_cd_with = function(command, opts)
-         local fzf_lua = require'fzf-lua'
+         local fzf_lua = require 'fzf-lua'
          opts = opts or {}
          opts.prompt = "Zoxide> "
          opts.fn_transform = function(x)
