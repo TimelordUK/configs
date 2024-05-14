@@ -43,15 +43,7 @@ return {
          end,
       })
 
-      vim.api.nvim_create_autocmd('FileType', {
-         pattern = 'nu',
-         callback = function()
-            vim.lsp.start({
-               name = 'nuls',
-               cmd = { 'nuls', 'start' },
-            })
-         end,
-      })
+      require'lspconfig'.nushell.setup{}
 
       local function start_tsserver()
          local root_files = { 'package.json', 'tsconfig.json', 'jsconfig.json' }
@@ -75,12 +67,6 @@ return {
       --    pattern = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
       --    desc = 'Start typescript LSP',
       --    callback = start_tsserver,
-      -- })
-      --
-      -- vim.api.nvim_create_autocmd('FileType', {
-      --     pattern = {'lua'},
-      --     desc = 'Start lua LSP',
-      --     callback = start_luaserver,
       -- })
       --
       -- you can add this in your init.lua
