@@ -864,4 +864,5 @@ $env.config = {
         }
     ]
 }
+source ~/.local/share/atuin/init.nu
 source ~/.zoxide.nu
