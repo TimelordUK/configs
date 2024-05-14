@@ -43,6 +43,16 @@ return {
          end,
       })
 
+      vim.api.nvim_create_autocmd('FileType', {
+         pattern = 'nu',
+         callback = function()
+            vim.lsp.start({
+               name = 'nuls',
+               cmd = { 'nuls', 'start' },
+            })
+         end,
+      })
+
       local function start_tsserver()
          local root_files = { 'package.json', 'tsconfig.json', 'jsconfig.json' }
          local paths = vim.fs.find(root_files, { stop = vim.env.HOME })
