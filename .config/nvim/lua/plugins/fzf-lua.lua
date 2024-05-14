@@ -45,7 +45,7 @@ return {
       require("fzf-lua").setup(options)
 
       local lua = "<cmd>lua require('fzf-lua')"
-      local o = "({ resume = true })<CR>"
+      local resume_option = "({ resume = true })<CR>"
       local silent = { silent = true }
 
       _G.fzf_fb = function()
@@ -78,9 +78,10 @@ return {
 
       vim.keymap.set("n", "ff", lua .. ".files({})<CR>", silent)
       vim.keymap.set("n", "fo", lua .. ".files({cwd='~/.config'})<CR>", silent)
-      vim.keymap.set("n", "fh", lua .. ".command_history" .. o, silent)
-      vim.keymap.set("n", "fm", lua .. ".git_commits" .. o, silent)
-      vim.keymap.set("n", "fp", lua .. ".grep_project" .. o, silent)
+      vim.keymap.set("n", "fh", lua .. ".command_history" .. resume_option, silent)
+      vim.keymap.set("n", "fm", lua .. ".git_commits" .. resume_option, silent)
+      vim.keymap.set("n", "fp", lua .. ".grep_project" .. resume_option, silent)
+      vim.keymap.set("n", "fd", lua .. ".lsp_document_symbols" .. resume_option, silent)
 
       _G.fzf_dirs = function(opts)
          _G.fzf_cd_with("fd --hidden --type d", opts)
