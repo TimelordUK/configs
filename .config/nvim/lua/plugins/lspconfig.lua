@@ -33,6 +33,16 @@ return {
          }
       }
 
+      require('lspconfig').lemminx.setup({
+         settings = {
+            xml = {
+               server = {
+                  workDir = "~/.cache/lemminx",
+               }
+            }
+         }
+      })
+
       vim.api.nvim_create_autocmd('FileType', {
          pattern = 'sh',
          callback = function()
@@ -43,7 +53,7 @@ return {
          end,
       })
 
-      require'lspconfig'.nushell.setup{}
+      require 'lspconfig'.nushell.setup {}
 
       local function start_tsserver()
          local root_files = { 'package.json', 'tsconfig.json', 'jsconfig.json' }
