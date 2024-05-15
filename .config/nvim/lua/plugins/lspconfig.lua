@@ -53,7 +53,18 @@ return {
          end,
       })
 
+      vim.api.nvim_create_autocmd('FileType', {
+         pattern = 'json',
+         callback = function()
+            vim.lsp.start({
+               name = 'vscode-json-languageserver',
+               cmd = { 'vscode-json-languageserver', '--stdio' },
+            })
+         end,
+      })
+
       require 'lspconfig'.nushell.setup {}
+      require 'lspconfig'.pyright.setup {}
 
       local function start_tsserver()
          local root_files = { 'package.json', 'tsconfig.json', 'jsconfig.json' }
@@ -137,6 +148,5 @@ return {
          desc = 'LSP actions',
          callback = setup_bindings
       })
-      require 'lspconfig'.pyright.setup {}
    end
 }
