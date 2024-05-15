@@ -65,6 +65,7 @@ return {
 
       require 'lspconfig'.nushell.setup {}
       require 'lspconfig'.pyright.setup {}
+      require 'lspconfig'.yamlls.setup {}
 
       local function start_tsserver()
          local root_files = { 'package.json', 'tsconfig.json', 'jsconfig.json' }
