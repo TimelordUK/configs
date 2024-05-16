@@ -40,11 +40,11 @@ return {
                enable = true,
                swap_next = {
                   ["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
-                  ["<leader>nm"] = "@function.outer", -- swap function with next
+                  ["<leader>nm"] = "@function.outer",  -- swap function with next
                },
                swap_previous = {
                   ["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
-                  ["<leader>pm"] = "@function.outer", -- swap function with previous
+                  ["<leader>pm"] = "@function.outer",  -- swap function with previous
                },
             },
             move = {
@@ -97,5 +97,19 @@ return {
       vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
       vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
       vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
+
+      require 'nvim-treesitter.configs'.setup {
+         textobjects = {
+            lsp_interop = {
+               enable = true,
+               border = 'none',
+               floating_preview_opts = {},
+               peek_definition_code = {
+                  ["<leader>df"] = "@function.outer",
+                  ["<leader>dF"] = "@class.outer",
+               },
+            },
+         },
+      }
    end,
 }
