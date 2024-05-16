@@ -85,12 +85,12 @@ return {
          })
       end
 
-      -- vim.api.nvim_create_autocmd('FileType', {
-      --    pattern = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-      --    desc = 'Start typescript LSP',
-      --    callback = start_tsserver,
-      -- })
-      --
+      vim.api.nvim_create_autocmd('FileType', {
+         pattern = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+         desc = 'Start typescript LSP',
+         callback = start_tsserver,
+      })
+
       -- you can add this in your init.lua
       -- (note: diagnostics are not exclusive to LSP)
 
