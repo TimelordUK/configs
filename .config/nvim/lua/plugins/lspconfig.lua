@@ -1,7 +1,8 @@
 return {
    'neovim/nvim-lspconfig',
    config = function()
-      require 'lspconfig'.lua_ls.setup {
+      local lspconfig = require('lspconfig')
+      lspconfig.lua_ls.setup {
          on_init = function(client)
             local path = client.workspace_folders[1].name
             if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
@@ -33,7 +34,7 @@ return {
          }
       }
 
-      require('lspconfig').lemminx.setup({
+      lspconfig.lemminx.setup({
          settings = {
             xml = {
                server = {
@@ -43,15 +44,16 @@ return {
          }
       })
 
-      vim.api.nvim_create_autocmd('FileType', {
-         pattern = 'sh',
-         callback = function()
-            vim.lsp.start({
-               name = 'bash-language-server',
-               cmd = { 'bash-language-server', 'start' },
-            })
-         end,
-      })
+      -- vim.api.nvim_create_autocmd('FileType', {
+      --    pattern = 'java',
+      --    callback = function()
+      --       local config = {
+      --          cmd = { '/home/me/.local/bin/jdtls' },
+      --          root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
+      --       }
+      --       require('jdtls').start_or_attach(config)
+      --    end
+      -- })
 
       vim.api.nvim_create_autocmd('FileType', {
          pattern = 'json',
@@ -69,10 +71,13 @@ return {
          lineFoldingOnly = true
       }
 
-      require 'lspconfig'.nushell.setup(capabilities)
-      require 'lspconfig'.pyright.setup(capabilities)
-      require 'lspconfig'.yamlls.setup(capabilities)
-      require 'lspconfig'.tsserver.setup(capabilities)
+      lspconfig.nushell.setup(capabilities)
+      lspconfig.pyright.setup(capabilities)
+      lspconfig.yamlls.setup(capabilities)
+      lspconfig.tsserver.setup(capabilities)
+      lspconfig.gopls.setup(capabilities)
+      -- lspconfig.jdtls.setup(capabilities)
+      lspconfig.bashls.setup(capabilities)
 
       -- you can add this in your init.lua
       -- (note: diagnostics are not exclusive to LSP)
