@@ -11,7 +11,12 @@ return {
             },
             footer = {}, -- footer
             shortcut = {
-               { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+               {
+                  desc = '󰊳 Update',
+                  group = '@property',
+                  action = 'Lazy update',
+                  key = 'u'
+               },
                {
                   icon = ' ',
                   icon_hl = '@variable',
@@ -19,6 +24,12 @@ return {
                   group = 'Label',
                   action = 'Telescope find_files',
                   key = 'f',
+               },
+               {
+                  desc = '☢ Session',
+                  group = '@property',
+                  action = 'Session',
+                  key = 's',
                },
             },
          },

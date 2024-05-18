@@ -3,7 +3,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/dev/configs/.local/share/nvim/sessions
+cd ~/dev/configs/.config/nvim
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -13,18 +13,24 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +56 ~/.zshrc
+badd +52 ~/.zshrc
 badd +1 ~/.bash_aliases
 badd +1 ~/.tmux.conf
 badd +1 ~/.zsh/.p10k.zsh
+badd +1 workspace/jdt.ls-java-project/.settings/org.eclipse.jdt.core.prefs
 argglobal
 %argdel
 $argadd ~/.zshrc
 $argadd ~/.bash_aliases
 $argadd ~/.tmux.conf
 $argadd ~/.zsh/.p10k.zsh
-edit ~/.zshrc
+edit workspace/jdt.ls-java-project/.settings/org.eclipse.jdt.core.prefs
 argglobal
+if bufexists(fnamemodify("workspace/jdt.ls-java-project/.settings/org.eclipse.jdt.core.prefs", ":p")) | buffer workspace/jdt.ls-java-project/.settings/org.eclipse.jdt.core.prefs | else | edit workspace/jdt.ls-java-project/.settings/org.eclipse.jdt.core.prefs | endif
+if &buftype ==# 'terminal'
+  silent file workspace/jdt.ls-java-project/.settings/org.eclipse.jdt.core.prefs
+endif
+balt ~/.zshrc
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -41,7 +47,7 @@ setlocal cinoptions=
 setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=:#
+setlocal comments=:#,:!
 setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t
 setlocal completefunc=
@@ -56,10 +62,10 @@ setlocal define=
 setlocal dictionary=
 setlocal nodiff
 setlocal equalprg=
-setlocal errorformat=%f:\ line\ %l:\ %m,%-G%.%#
+setlocal errorformat=
 setlocal expandtab
-if &filetype != 'zsh'
-setlocal filetype=zsh
+if &filetype != 'jproperties'
+setlocal filetype=jproperties
 endif
 setlocal fillchars=fold:\ 
 setlocal fixendofline
@@ -75,18 +81,18 @@ setlocal foldnestmax=20
 setlocal foldtext=v:lua.require'ufo.main'.foldtext()
 setlocal formatexpr=
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatoptions=jcroql
+setlocal formatoptions=cqj
 setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetShIndent()
-setlocal indentkeys=0{,0},0),0],!^F,o,O,e,0=then,0=do,0=else,0=elif,0=fi,0=esac,0=done,0=end,),0=;;,0=;&,0=fin,0=fil,0=fip,0=fir,0=fix
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=:ZshKeywordPrg
+setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
 setlocal lispoptions=
@@ -94,7 +100,7 @@ setlocal lispwords=
 setlocal nolist
 setlocal listchars=
 setlocal makeencoding=
-setlocal makeprg=zsh\ -n\ --\ %:S
+setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
@@ -113,27 +119,27 @@ setlocal rightleftcmd=search
 setlocal scrollback=-1
 setlocal noscrollbind
 setlocal scrolloff=-1
-setlocal shiftwidth=2
+setlocal shiftwidth=3
 setlocal showbreak=
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal nosmoothscroll
-setlocal softtabstop=2
+setlocal softtabstop=3
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\\t\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
-setlocal spelloptions=
+setlocal spelloptions=noplainbuffer
 setlocal statuscolumn=
-setlocal statusline=%#lualine_a_command#\ COMMAND\ %#lualine_transitional_lualine_a_command_to_lualine_c_command#%<%#lualine_c_command#\ .zshrc\ %#lualine_c_command#%=%#lualine_c_command#\ utf-8\ %#lualine_c_command#\ \ %#lualine_x_filetype_DevIconZshrc_command#\ \ %#lualine_c_command#zsh\ %#lualine_transitional_lualine_b_command_to_lualine_c_command#%#lualine_b_command#\ 54%%\ %#lualine_transitional_lualine_a_command_to_lualine_b_command#%#lualine_a_command#\ \ 77:1\ \ 
+setlocal statusline=%<%#lualine_c_inactive#\ org.eclipse.jdt.core.prefs\ %#lualine_c_inactive#%=%#lualine_c_inactive#\ \ \ 1:1\ \ 
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'zsh'
-setlocal syntax=zsh
+if &syntax != ''
+setlocal syntax=
 endif
-setlocal tabstop=2
+setlocal tabstop=3
 setlocal tagcase=
 setlocal tagfunc=
 setlocal tags=
@@ -154,20 +160,12 @@ setlocal winhighlight=
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-4,5fold
-13,14fold
-11,14fold
-31,40fold
-71,72fold
-74,75fold
-76,77fold
-73,78fold
 let &fdl = &fdl
-let s:l = 77 - ((24 * winheight(0) + 26) / 53)
+let s:l = 1 - ((0 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 77
+keepjumps 1
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
