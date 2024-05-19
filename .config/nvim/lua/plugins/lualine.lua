@@ -41,6 +41,15 @@ return {
          cond = conditions.buffer_not_empty
       }
 
+     local name = function()
+       return  vim.fn. fnamemodify(vim.v.this_session, ':t')
+      end
+
+      local session = {
+         name,
+         cond = conditions.buffer_not_empty
+      }
+
       local config = {
          options = { theme = 'gruvbox' },
          sections = {
@@ -63,9 +72,8 @@ return {
          table.insert(config.sections.lualine_x, component)
       end
 
-
-
       ins_left(lst)
+      ins_left(session)
 
       -- ins_left {
       --    'v:this_session',
