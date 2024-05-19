@@ -76,7 +76,7 @@ return {
       lspconfig.yamlls.setup(capabilities)
       lspconfig.tsserver.setup(capabilities)
       lspconfig.gopls.setup(capabilities)
-      -- lspconfig.jdtls.setup(capabilities)
+      lspconfig.jdtls.setup(capabilities)
       lspconfig.bashls.setup(capabilities)
 
       -- you can add this in your init.lua
