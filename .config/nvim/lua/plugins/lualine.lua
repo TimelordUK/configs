@@ -10,7 +10,6 @@ return {
          if next(clients) == nil then
             return msg
          end
-         local bt = vim.bo.buftype
          local num = vim.fn.bufnr('%')
          for _, client in ipairs(clients) do
             local buffers = client.attached_buffers
@@ -54,9 +53,9 @@ return {
          options = { theme = 'gruvbox' },
          sections = {
             lualine_a = { 'mode' },
-            lualine_b = { 'branch', 'diff', 'diagnostics' },
+            lualine_b = { 'branch', 'diff', 'diagnostics', 'selectioncount' },
             lualine_c = { 'filename' },
-            lualine_x = { 'encoding', 'fileformat', 'filetype' },
+            lualine_x = { 'encoding', 'fileformat', 'filetype', 'filesize' },
             lualine_y = { 'progress' },
             lualine_z = { 'location' },
          },
