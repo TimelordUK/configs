@@ -3,7 +3,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/dev/configs/.local/share/nvim/sessions
+cd ~/dev/configs/.config/nvim
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -15,23 +15,38 @@ else
 endif
 badd +58 ~/.zshrc
 badd +1 ~/.bash_aliases
-badd +1 ~/.tmux.conf
+badd +7 ~/.tmux.conf
 badd +1 ~/.zsh/.p10k.zsh
 badd +1 ~/.config/nushell/env.nu
-badd +6 ~/.config/nushell/config.nu
+badd +25 ~/.config/nushell/config.nu
 argglobal
 %argdel
 $argadd ~/.zshrc
 $argadd ~/.bash_aliases
 $argadd ~/.tmux.conf
 $argadd ~/.zsh/.p10k.zsh
-edit ~/.tmux.conf
+edit ~/.config/nushell/config.nu
 argglobal
-if bufexists(fnamemodify("~/.tmux.conf", ":p")) | buffer ~/.tmux.conf | else | edit ~/.tmux.conf | endif
+if bufexists(fnamemodify("~/.config/nushell/config.nu", ":p")) | buffer ~/.config/nushell/config.nu | else | edit ~/.config/nushell/config.nu | endif
 if &buftype ==# 'terminal'
-  silent file ~/.tmux.conf
+  silent file ~/.config/nushell/config.nu
 endif
-balt ~/.bash_aliases
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <buffer> <C-Space> 
+nnoremap <buffer>  <Cmd>lua vim.lsp.buf.signature_help()
+nnoremap <buffer> K <Cmd>lua vim.lsp.buf.hover()
+nnoremap <buffer> gr <Cmd>lua vim.lsp.buf.references()
+nnoremap <buffer> go <Cmd>lua vim.lsp.buf.type_definition()
+nnoremap <buffer> gi <Cmd>lua vim.lsp.buf.implementation()
+nnoremap <buffer> gD <Cmd>lua vim.lsp.buf.declaration()
+nnoremap <buffer> gd <Cmd>lua vim.lsp.buf.definition()
+nnoremap <buffer> <F4> <Cmd>lua vim.lsp.buf.code_action()
+nnoremap <buffer> <F3> <Cmd>lua vim.lsp.buf.format()
+nnoremap <buffer> <F2> <Cmd>lua vim.lsp.buf.rename()
+nnoremap <buffer> <C-K> <Cmd>lua vim.lsp.buf.signature_help()
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -48,7 +63,7 @@ setlocal cinoptions=
 setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=:#
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-,fb:���
 setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t
 setlocal completefunc=
@@ -65,8 +80,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'tmux'
-setlocal filetype=tmux
+if &filetype != 'nu'
+setlocal filetype=nu
 endif
 setlocal fillchars=fold:\ 
 setlocal fixendofline
@@ -108,7 +123,7 @@ setlocal modifiable
 setlocal nrformats=bin,hex
 setlocal number
 setlocal numberwidth=4
-setlocal omnifunc=
+setlocal omnifunc=v:lua.vim.lsp.omnifunc
 setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
@@ -120,29 +135,29 @@ setlocal rightleftcmd=search
 setlocal scrollback=-1
 setlocal noscrollbind
 setlocal scrolloff=-1
-setlocal shiftwidth=2
+setlocal shiftwidth=3
 setlocal showbreak=
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal nosmoothscroll
-setlocal softtabstop=2
+setlocal softtabstop=3
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\\t\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
 setlocal spelloptions=noplainbuffer
 setlocal statuscolumn=
-setlocal statusline=%#lualine_a_command#\ COMMAND\ %#lualine_transitional_lualine_a_command_to_lualine_c_command#%<%#lualine_c_command#\ .tmux.conf\ %#lualine_c_command#%=%#lualine_c_command#\ utf-8\ %#lualine_c_command#\ \ %#lualine_x_filetype_DevIconTmux_command#\ \ %#lualine_c_command#tmux\ %#lualine_transitional_lualine_b_command_to_lualine_c_command#%#lualine_b_command#\ Top\ %#lualine_transitional_lualine_a_command_to_lualine_b_command#%#lualine_a_command#\ \ \ 1:1\ \ 
+setlocal statusline=%#lualine_a_normal#\ NORMAL\ %#lualine_transitional_lualine_a_normal_to_lualine_c_normal#%<%#lualine_c_normal#\ config.nu\ %#lualine_c_normal#%=%#lualine_c_normal#\ utf-8\ %#lualine_c_normal#\ \ %#lualine_x_filetype_DevIconNushell_normal#\ >\ %#lualine_c_normal#nu\ %#lualine_transitional_lualine_b_normal_to_lualine_c_normal#%#lualine_b_normal#\ \ 2%%\ %#lualine_transitional_lualine_a_normal_to_lualine_b_normal#%#lualine_a_normal#\ \ 25:1\ \ 
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
 if &syntax != ''
 setlocal syntax=
 endif
-setlocal tabstop=2
+setlocal tabstop=3
 setlocal tagcase=
-setlocal tagfunc=
+setlocal tagfunc=v:lua.vim.lsp.tagfunc
 setlocal tags=
 setlocal textwidth=0
 setlocal thesaurus=
@@ -161,15 +176,137 @@ setlocal winhighlight=
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-168,170fold
-171,172fold
-174,175fold
+9,71fold
+74,136fold
+148,150fold
+153,154fold
+162,165fold
+157,168fold
+176,178fold
+185,188fold
+190,194fold
+181,195fold
+198,202fold
+210,213fold
+205,215fold
+218,220fold
+223,226fold
+247,249fold
+251,256fold
+245,257fold
+263,264fold
+260,267fold
+277,281fold
+283,288fold
+273,289fold
+295,314fold
+316,321fold
+291,322fold
+328,330fold
+332,335fold
+324,336fold
+342,348fold
+350,353fold
+338,354fold
+270,355fold
+365,368fold
+364,369fold
+359,370fold
+378,381fold
+377,382fold
+372,383fold
+385,390fold
+392,397fold
+399,404fold
+406,411fold
+419,421fold
+418,422fold
+413,423fold
+425,430fold
+432,437fold
+439,444fold
+446,451fold
+453,458fold
+460,465fold
+473,475fold
+472,476fold
+467,477fold
+485,487fold
+484,488fold
+479,489fold
+497,499fold
+496,500fold
+491,501fold
+509,512fold
+508,513fold
+503,514fold
+516,521fold
+529,531fold
+528,532fold
+523,533fold
+535,540fold
+542,547fold
+555,557fold
+554,558fold
+549,559fold
+567,569fold
+566,570fold
+561,571fold
+573,578fold
+580,585fold
+593,595fold
+592,596fold
+587,597fold
+605,607fold
+604,608fold
+599,609fold
+611,616fold
+618,623fold
+625,630fold
+632,637fold
+639,644fold
+646,651fold
+653,658fold
+660,665fold
+673,675fold
+672,676fold
+667,677fold
+685,688fold
+684,689fold
+679,690fold
+692,697fold
+699,704fold
+706,711fold
+713,718fold
+720,725fold
+727,732fold
+734,739fold
+741,746fold
+754,756fold
+753,757fold
+748,758fold
+760,765fold
+773,775fold
+772,776fold
+767,777fold
+779,784fold
+786,791fold
+793,798fold
+800,805fold
+807,812fold
+814,819fold
+821,826fold
+835,841fold
+843,849fold
+858,863fold
+358,864fold
+145,865fold
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 26) / 53)
+let s:l = 25 - ((24 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 25
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

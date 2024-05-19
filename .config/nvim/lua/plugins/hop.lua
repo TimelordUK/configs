@@ -23,6 +23,6 @@ return {
 
       vim.keymap.set('n', '<leader>hw', '<cmd>HopWord<CR>')
       vim.keymap.set('n', '<leader>hl', '<cmd>HopLine<CR>')
-      vim.keymap.set('n', '<leader>ht', "<cmd>lua require'hop'.hint_char1({ direction = require('hop.hint').HintDirection.AFTER_CURSOR, current_line_only = true })<CR>")
+      vim.keymap.set('n', '<leader>hc', "<cmd>lua require'hop'.hint_char1({ direction = require('hop.hint').HintDirection.AFTER_CURSOR, current_line_only = true })<CR>")
    end
 }
