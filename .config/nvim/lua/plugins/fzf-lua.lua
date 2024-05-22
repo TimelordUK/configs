@@ -82,6 +82,7 @@ return {
       vim.keymap.set("n", "fm", lua .. ".git_commits" .. resume_option, silent)
       vim.keymap.set("n", "fp", lua .. ".grep_project" .. resume_option, silent)
       vim.keymap.set("n", "fd", lua .. ".lsp_document_symbols" .. resume_option, silent)
+      vim.keymap.set("n", "fe", lua .. ".buffers" .. resume_option, silent)
 
       _G.fzf_dirs = function(opts)
          _G.fzf_cd_with("fd --hidden --type d", opts)

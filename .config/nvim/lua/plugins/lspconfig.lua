@@ -79,8 +79,8 @@ return {
          pattern = 'markdown',
          callback = function()
             vim.lsp.start({
-               name = 'vscode-mdls',
-               cmd = { 'mdlsp' },
+               name = 'marksman',
+               cmd = { 'marksman' },
             })
          end,
       })
