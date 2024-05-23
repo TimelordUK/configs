@@ -1,0 +1,30 @@
+session_name: dev
+windows:
+  - window_name: main
+    layout: main-horizontal
+    focus: true
+    panes:
+      - shell_command:
+          - echo 'hi'
+        focus: True
+    shell_command_before:
+      - cd ~/ # run as a first command in all panes
+  - window_name: nu
+    layout: main-horizontal
+    focus: false
+    panes:
+      - shell_command:
+          - nu
+        focus: False
+    shell_command_before:
+      - cd ~/ # run as a first command in all panes
+  - window_name: q 
+    layout: main-horizontal
+    focus: false
+    panes:
+      - shell_command:
+          - q
+        focus: False
+    shell_command_before:
+      - cd ~/ # run as a first command in all panes
+
