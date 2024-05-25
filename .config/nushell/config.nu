@@ -876,3 +876,7 @@ use custom-completions/make/make-completions.nu *
 use custom-completions/rg/rg-completions.nu *
 use custom-completions/rustup/rustup-completions.nu *
 use custom-completions/cargo/cargo-completions.nu *
+use custom-completions/make/make-completions.nu *
+use custom-completions/curl/curl-completions.nu *
+use custom-completions/tar/tar-completions.nu *   
+use custom-completions/yarn/yarn-v4-completions.nu *
