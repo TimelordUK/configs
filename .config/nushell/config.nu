@@ -868,3 +868,11 @@ $env.config = {
 use ~/.cache/starship/init.nu
 source ~/.local/share/atuin/init.nu
 source ~/.zoxide.nu
+use custom-completions/btm/btm-completions.nu *
+use custom-completions/git/git-completions.nu *
+use custom-completions/bat/bat-completions.nu *
+use custom-completions/npm/npm-completions.nu *
+use custom-completions/make/make-completions.nu *
+use custom-completions/rg/rg-completions.nu *
+use custom-completions/rustup/rustup-completions.nu *
+use custom-completions/cargo/cargo-completions.nu *
