@@ -9,15 +9,6 @@ windows:
         focus: True
     shell_command_before:
       - cd ~/ # run as a first command in all panes
-  - window_name: nu
-    layout: main-horizontal
-    focus: false
-    panes:
-      - shell_command:
-          - nu
-        focus: False
-    shell_command_before:
-      - cd ~/ # run as a first command in all panes
   - window_name: q 
     layout: main-horizontal
     focus: false
@@ -27,4 +18,31 @@ windows:
         focus: False
     shell_command_before:
       - cd ~/ # run as a first command in all panes
-
+  - window_name: nu
+    layout: main-horizontal
+    focus: false
+    panes:
+      - shell_command:
+          - nu
+        focus: False
+    shell_command_before:
+      - cd ~/ # run as a first command in all panes
+  - window_name: nvim
+    layout: main-horizontal
+    focus: false
+    panes:
+      - shell_command:
+          - nvim
+        focus: False
+    shell_command_before:
+      - cd ~/ # run as a first command in all panes
+  - window_name: lazygit
+    layout: main-horizontal
+    focus: false
+    panes:
+      - shell_command:
+          - cd ~/dev/configs
+          - lazygit
+        focus: False
+    shell_command_before:
+      - cd ~/ # run as a first command in all panes
