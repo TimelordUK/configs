@@ -97,7 +97,8 @@ return {
       lspconfig.tsserver.setup(capabilities)
       lspconfig.gopls.setup(capabilities)
       lspconfig.jdtls.setup(capabilities)
-      lspconfig.bashls.setup(capabilities)
+      lspconfig.bashls.setup(vim.lsp.protocol.make_client_capabilities())
+      lspconfig.perlls.setup(capabilities)
 
       -- you can add this in your init.lua
       -- (note: diagnostics are not exclusive to LSP)
