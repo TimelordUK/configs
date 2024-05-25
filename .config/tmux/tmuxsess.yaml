@@ -27,4 +27,29 @@ windows:
         focus: False
     shell_command_before:
       - cd ~/ # run as a first command in all panes
+  - window_name: lazygit 
+    layout: main-horizontal
+    focus: false
+    panes:
+      - shell_command:
+          - cd ~/dev/configs
+          - lazygit
+        focus: False
+    shell_command_before:
+      - cd ~/ # run as a first command in all panes
+  - window_name: build 
+    layout: main-horizontal
+    focus: false
+    panes:
+      - shell_command:
+          - which gcc
+          - gcc --version
+          - gcc-11 --version
+          - gcc-13.1 --version
+          - gcc-14.1 --version
+          - clang --version
+          - echo 'build shell' 
+        focus: False
+    shell_command_before:
+      - cd ~/ # run as a first command in all panes
 
