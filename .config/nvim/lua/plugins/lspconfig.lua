@@ -55,10 +55,16 @@ return {
       --    end
       -- })
 
+      local function start_lsp(cfg)
+         vim.schedule(function()
+            vim.lsp.start(cfg)
+         end)
+      end
+
       vim.api.nvim_create_autocmd('FileType', {
          pattern = 'cpp',
          callback = function()
-            vim.lsp.start({
+            start_lsp({
                name = 'clangd',
                cmd = { 'clangd' },
             })
@@ -68,7 +74,7 @@ return {
       vim.api.nvim_create_autocmd('FileType', {
          pattern = 'json',
          callback = function()
-            vim.lsp.start({
+            start_lsp({
                name = 'vscode-json-languageserver',
                cmd = { 'vscode-json-languageserver', '--stdio' },
             })
@@ -78,7 +84,7 @@ return {
       vim.api.nvim_create_autocmd('FileType', {
          pattern = 'markdown',
          callback = function()
-            vim.lsp.start({
+            start_lsp({
                name = 'marksman',
                cmd = { 'marksman' },
             })

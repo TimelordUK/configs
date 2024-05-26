@@ -1,9 +1,7 @@
 return {
    {
       "nvim-treesitter/nvim-treesitter",
-      build = function()
-         build = ":TSUpdate"
-      end,
+       build = ":TSUpdate",
       dependencies = {
          "nvim-treesitter/nvim-treesitter-textobjects",
          -- NOTE: additional parser

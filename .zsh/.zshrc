@@ -115,9 +115,10 @@ alias reload=". ~/.zshrc"
 alias ll="eza --grid -long -a --time-style=relative -s modified --extended --header --dereference"
 alias lt="eza --tree --long"
 alias fzfp="fzf --preview 'bat --color=always {}' --preview-window '~3'"
+alias tmuxsess='tmuxp load ~/dev/configs/.config/tmux/tmuxsess.yaml'
 autoload -Uz compinit
-export PATH=$HOME/opt/llvm/install/bin:/usr/local/gcc-13/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH:/usr/local/gcc-13/lib64:${HOME}/g/miniconda3/lib
+export PATH=$HOME/opt/llvm/install/bin:/usr/local/gcc-14/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH:/usr/local/gcc-14/lib64:${HOME}/g/miniconda3/lib
 alias q='QHOME=~/q rlwrap -r ~/q/l64/q -p 7788'
 bindkey -s '^p' 'fzfp^M'
 bindkey -s '^x' 'xplr^M'
