@@ -3,7 +3,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/dev/configs/.config/nvim
+cd ~/dev/configs
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -18,14 +18,354 @@ badd +1 ~/.bash_aliases
 badd +7 ~/.tmux.conf
 badd +1 ~/.zsh/.p10k.zsh
 badd +1 ~/.config/nushell/env.nu
-badd +25 ~/.config/nushell/config.nu
+badd +27 ~/.config/nushell/config.nu
 argglobal
 %argdel
 $argadd ~/.zshrc
 $argadd ~/.bash_aliases
 $argadd ~/.tmux.conf
 $argadd ~/.zsh/.p10k.zsh
-edit ~/.config/nushell/config.nu
+edit ~/.zshrc
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 91 + 91) / 183)
+exe '2resize ' . ((&lines * 19 + 21) / 42)
+exe 'vert 2resize ' . ((&columns * 91 + 91) / 183)
+exe '3resize ' . ((&lines * 19 + 21) / 42)
+exe 'vert 3resize ' . ((&columns * 91 + 91) / 183)
+argglobal
+balt ~/.config/nushell/config.nu
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=:#
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t
+setlocal completefunc=
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal nocopyindent
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%f:\ line\ %l:\ %m,%-G%.%#
+setlocal expandtab
+if &filetype != 'zsh'
+setlocal filetype=zsh
+endif
+setlocal fillchars=fold:\ 
+setlocal fixendofline
+setlocal foldcolumn=1
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=v:lua.require'ufo.main'.foldtext()
+setlocal formatexpr=
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=jcroql
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetShIndent()
+setlocal indentkeys=0{,0},0),0],!^F,o,O,e,0=then,0=do,0=else,0=elif,0=fi,0=esac,0=done,0=end,),0=;;,0=;&,0=fin,0=fil,0=fip,0=fir,0=fix
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=:ZshKeywordPrg
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispoptions=
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=zsh\ -n\ --\ %:S
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal relativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal scrollback=-1
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=2
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal nosmoothscroll
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\\t\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=
+setlocal statuscolumn=
+setlocal statusline=%#lualine_a_normal#\ NORMAL\ %#lualine_transitional_lualine_a_normal_to_lualine_c_normal#%<%#lualine_c_normal#\ .zshrc\ %#lualine_c_normal#\ \ LSP:\ No\ Active\ Lsp\ %#lualine_c_normal#\ dots\ %#lualine_c_normal#%=%#lualine_c_normal#\ utf-8\ %#lualine_c_normal#\ \ %#lualine_x_filetype_DevIconZshrc_normal#\ \ %#lualine_c_normal#zsh\ %#lualine_c_normal#%#lualine_c_normal#\ 5.4k\ %#lualine_transitional_lualine_b_normal_to_lualine_c_normal#%#lualine_b_normal#\ 78%%\ %#lualine_transitional_lualine_a_normal_to_lualine_b_normal#%#lualine_a_normal#\ 114:1\ \ 
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'zsh'
+setlocal syntax=zsh
+endif
+setlocal tabstop=2
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal winbar=
+setlocal winblend=0
+setlocal nowinfixbuf
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal winhighlight=
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+4,5fold
+15,16fold
+13,16fold
+33,42fold
+73,74fold
+76,77fold
+78,79fold
+75,80fold
+let &fdl = &fdl
+let s:l = 114 - ((4 * winheight(0) + 19) / 39)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 114
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/.config/nushell/env.nu", ":p")) | buffer ~/.config/nushell/env.nu | else | edit ~/.config/nushell/env.nu | endif
+if &buftype ==# 'terminal'
+  silent file ~/.config/nushell/env.nu
+endif
+balt ~/.config/nushell/config.nu
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <buffer> <C-Space> 
+nnoremap <buffer> K <Cmd>lua vim.lsp.buf.hover()
+nnoremap <buffer> gr <Cmd>lua vim.lsp.buf.references()
+nnoremap <buffer> go <Cmd>lua vim.lsp.buf.type_definition()
+nnoremap <buffer> gi <Cmd>lua vim.lsp.buf.implementation()
+nnoremap <buffer> gD <Cmd>lua vim.lsp.buf.declaration()
+nnoremap <buffer> gd <Cmd>lua vim.lsp.buf.definition()
+nnoremap <buffer> <F4> <Cmd>lua vim.lsp.buf.code_action()
+nnoremap <buffer> <F3> <Cmd>lua vim.lsp.buf.format()
+nnoremap <buffer> <F2> <Cmd>lua vim.lsp.buf.rename()
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-,fb:���
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t
+setlocal completefunc=
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal nocopyindent
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'nu'
+setlocal filetype=nu
+endif
+setlocal fillchars=fold:\ 
+setlocal fixendofline
+setlocal foldcolumn=1
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=v:lua.require'ufo.main'.foldtext()
+setlocal formatexpr=
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=tcqj
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispoptions=
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=v:lua.vim.lsp.omnifunc
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal relativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal scrollback=-1
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=2
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal nosmoothscroll
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\\t\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=noplainbuffer
+setlocal statuscolumn=
+setlocal statusline=%<%#lualine_c_inactive#\ env.nu\ %#lualine_c_inactive#%=%#lualine_c_inactive#\ \ \ 1:1\ \ 
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != ''
+setlocal syntax=
+endif
+setlocal tabstop=2
+setlocal tagcase=
+setlocal tagfunc=v:lua.vim.lsp.tagfunc
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal winbar=
+setlocal winblend=0
+setlocal nowinfixbuf
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal winhighlight=
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+6,9fold
+5,16fold
+21,24fold
+25,26fold
+28,30fold
+19,34fold
+66,68fold
+70,72fold
+65,73fold
+78,80fold
+85,87fold
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 9) / 19)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
 argglobal
 if bufexists(fnamemodify("~/.config/nushell/config.nu", ":p")) | buffer ~/.config/nushell/config.nu | else | edit ~/.config/nushell/config.nu | endif
 if &buftype ==# 'terminal'
@@ -36,15 +376,15 @@ set cpo&vim
 inoremap <buffer> <C-Space> 
 nnoremap <buffer>  <Cmd>lua vim.lsp.buf.signature_help()
 nnoremap <buffer> K <Cmd>lua vim.lsp.buf.hover()
-nnoremap <buffer> gr <Cmd>lua vim.lsp.buf.references()
-nnoremap <buffer> go <Cmd>lua vim.lsp.buf.type_definition()
-nnoremap <buffer> gi <Cmd>lua vim.lsp.buf.implementation()
-nnoremap <buffer> gD <Cmd>lua vim.lsp.buf.declaration()
 nnoremap <buffer> gd <Cmd>lua vim.lsp.buf.definition()
-nnoremap <buffer> <F4> <Cmd>lua vim.lsp.buf.code_action()
-nnoremap <buffer> <F3> <Cmd>lua vim.lsp.buf.format()
-nnoremap <buffer> <F2> <Cmd>lua vim.lsp.buf.rename()
+nnoremap <buffer> gD <Cmd>lua vim.lsp.buf.declaration()
+nnoremap <buffer> gi <Cmd>lua vim.lsp.buf.implementation()
+nnoremap <buffer> go <Cmd>lua vim.lsp.buf.type_definition()
+nnoremap <buffer> gr <Cmd>lua vim.lsp.buf.references()
 nnoremap <buffer> <C-K> <Cmd>lua vim.lsp.buf.signature_help()
+nnoremap <buffer> <F2> <Cmd>lua vim.lsp.buf.rename()
+nnoremap <buffer> <F3> <Cmd>lua vim.lsp.buf.format()
+nnoremap <buffer> <F4> <Cmd>lua vim.lsp.buf.code_action()
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -148,7 +488,7 @@ setlocal spellfile=
 setlocal spelllang=en
 setlocal spelloptions=noplainbuffer
 setlocal statuscolumn=
-setlocal statusline=%#lualine_a_normal#\ NORMAL\ %#lualine_transitional_lualine_a_normal_to_lualine_c_normal#%<%#lualine_c_normal#\ config.nu\ %#lualine_c_normal#%=%#lualine_c_normal#\ utf-8\ %#lualine_c_normal#\ \ %#lualine_x_filetype_DevIconNushell_normal#\ >\ %#lualine_c_normal#nu\ %#lualine_transitional_lualine_b_normal_to_lualine_c_normal#%#lualine_b_normal#\ \ 2%%\ %#lualine_transitional_lualine_a_normal_to_lualine_b_normal#%#lualine_a_normal#\ \ 25:1\ \ 
+setlocal statusline=%<%#lualine_c_inactive#\ config.nu\ %#lualine_c_inactive#%=%#lualine_c_inactive#\ \ 22:1\ \ 
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
@@ -302,12 +642,18 @@ silent! normal! zE
 358,864fold
 145,865fold
 let &fdl = &fdl
-let s:l = 25 - ((24 * winheight(0) + 26) / 53)
+let s:l = 22 - ((8 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 25
+keepjumps 22
 normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 91 + 91) / 183)
+exe '2resize ' . ((&lines * 19 + 21) / 42)
+exe 'vert 2resize ' . ((&columns * 91 + 91) / 183)
+exe '3resize ' . ((&lines * 19 + 21) / 42)
+exe 'vert 3resize ' . ((&columns * 91 + 91) / 183)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -315,6 +661,8 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

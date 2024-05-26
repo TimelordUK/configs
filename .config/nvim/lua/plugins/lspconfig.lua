@@ -44,17 +44,6 @@ return {
          }
       })
 
-      -- vim.api.nvim_create_autocmd('FileType', {
-      --    pattern = 'java',
-      --    callback = function()
-      --       local config = {
-      --          cmd = { '/home/me/.local/bin/jdtls' },
-      --          root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
-      --       }
-      --       require('jdtls').start_or_attach(config)
-      --    end
-      -- })
-
       local function start_lsp(cfg)
          vim.schedule(function()
             vim.lsp.start(cfg)
@@ -118,6 +107,7 @@ return {
       -- Move to the next diagnostic
       vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
+
       local setup_bindings = function(event)
          local bufmap = function(mode, lhs, rhs)
             local opts = { buffer = event.buf }
@@ -149,7 +139,7 @@ return {
          bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
 
          -- Displays a function's signature information
-         bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+         -- bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
 
          -- Renames all references to the symbol under the cursor
          bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
@@ -160,9 +150,14 @@ return {
          -- Selects a code action available at the current cursor position
          bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
       end
+      local function bind_lsp(event)
+         vim.schedule(function()
+            setup_bindings(event)
+         end)
+      end
       vim.api.nvim_create_autocmd('LspAttach', {
          desc = 'LSP actions',
-         callback = setup_bindings
+         callback = bind_lsp
       })
    end
 }
