@@ -41,5 +41,5 @@
   "smart-splits.nvim": { "branch": "master", "commit": "c29547c7f144adc3387f2717626422e6b0027a08" },
   "symbols-outline.nvim": { "branch": "master", "commit": "564ee65dfc9024bdde73a6621820866987cbb256" },
   "telescope.nvim": { "branch": "master", "commit": "6312868392331c9c0f22725041f1ec2bef57c751" },
-  "tree-sitter-nu": { "branch": "main", "commit": "8233e8bb8826861240de7b8c4701d91b16b2d644" }
+  "tree-sitter-nu": { "branch": "main", "commit": "fae35745e32c015dc342136802f63b8456ccec7f" }
 }
