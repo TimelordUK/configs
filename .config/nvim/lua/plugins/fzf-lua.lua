@@ -1,7 +1,10 @@
 return {
    'ibhagwan/fzf-lua',
    -- optional for icon support
-   dependencies = { 'nvim-tree/nvim-web-devicons' },
+   dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      'folke/which-key.nvim',
+   },
    config = function()
       local options = {
          'default',
@@ -75,15 +78,7 @@ return {
          }
          fzf.grep_curbuf(opts)
       end
-
-      vim.keymap.set("n", "ff", lua .. ".files({})<CR>", silent)
-      vim.keymap.set("n", "fo", lua .. ".files({cwd='~/.config'})<CR>", silent)
-      vim.keymap.set("n", "fh", lua .. ".command_history" .. resume_option, silent)
-      vim.keymap.set("n", "fm", lua .. ".git_commits" .. resume_option, silent)
-      vim.keymap.set("n", "fp", lua .. ".grep_project" .. resume_option, silent)
-      vim.keymap.set("n", "fd", lua .. ".lsp_document_symbols" .. resume_option, silent)
-      vim.keymap.set("n", "fe", lua .. ".buffers" .. resume_option, silent)
-      vim.keymap.set("n", "fw", lua .. ".lsp_live_workspace_symbols" .. resume_option, silent)
+      local wk = require('which-key')
 
       _G.fzf_dirs = function(opts)
          _G.fzf_cd_with("fd --hidden --type d", opts)
@@ -133,12 +128,26 @@ return {
       vim.cmd([[command! -nargs=* Directories lua _G.fzf_dirs()]])
       vim.cmd([[command! -nargs=* Zoxide lua _G.fzf_zoxide_dirs()]])
       vim.cmd([[command! -nargs=* Session lua _G.fzf_session_dirs()]])
-      -- or to a keybind, both below are (sort of) equal
-      -- vim.keymap.set('n', '<C-k>', _G.fzf_dirs)
-      --  vim.keymap.set('n', '<C-k>', '<cmd>lua _G.fzf_dirs()<CR>')
-      vim.keymap.set('n', '<C-x>', '<cmd>lua _G.fzf_zoxide_dirs()<CR>')
-      vim.keymap.set("n", "fb", '<cmd>lua _G.fzf_fb()<CR>', silent)
-      vim.keymap.set("n", "fs", '<cmd>lua _G.fzf_session_dirs()<CR>', silent) -- We can also send call options directly
-      -- :lua _G.fzf_dirs({ cwd = <other directory> })
+
+      wk.register({
+            f = {
+               name = ".fzf", -- optional group name
+               q = { function() print("bar") end, "Foobar" }, -- you can also pass functions!
+               b = { "<cmd>lua _G.fzf_fb()<CR>", "grep buffer" },
+               d = { lua .. ".lsp_document_symbols" .. resume_option, "lsp doc symbols" },
+               e = { lua .. ".buffers" .. resume_option, "buffers" },
+               f = { lua .. ".files({})<CR>", "Open folder file" },
+               h = { lua .. ".command_history" .. resume_option, "command history" },
+               o = { lua .. ".files({cwd='~/.config'})<CR>", "Open config file" },
+               m = { lua .. ".git_commits" .. resume_option, "git commits" },
+               p = { lua .. ".grep_project" .. resume_option, "grep project" },
+               s = { "<cmd>lua _G.fzf_session_dirs()<CR>", "sessions" },
+               w = { lua .. ".lsp_live_workspace_symbols" .. resume_option, "lsp workspace sym" },
+               z = { "<cmd>lua _G.fzf_zoxide_dirs()<CR>", "zoxide" },
+            },
+         },
+         {
+            prefix = "<leader>"
+         })
    end
 }
