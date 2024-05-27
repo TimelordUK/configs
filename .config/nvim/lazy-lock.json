@@ -33,6 +33,7 @@
   "nvim-ufo": { "branch": "main", "commit": "65dda6360879f6ffe0278163b9192a573a0d2a08" },
   "nvim-web-devicons": { "branch": "master", "commit": "b77921fdc44833c994fdb389d658ccbce5490c16" },
   "nvim-window": { "branch": "main", "commit": "81f29840ac3aaeea6fc2153edfabebd00d692476" },
+  "outline.nvim": { "branch": "main", "commit": "139e363dd5a44f66a51041264aabe3884df4dd98" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "promise-async": { "branch": "main", "commit": "93540c168c5ed2b030ec3e6c40ab8bbb85e36355" },
   "qf_helper.nvim": { "branch": "master", "commit": "fa3c2f3f2706e2c9984409c9c14b5993302ddfa7" },
@@ -40,7 +41,6 @@
   "rustaceanvim": { "branch": "master", "commit": "e306c742bd7f7183e371cd91268b72d9db1bbae0" },
   "sessions.nvim": { "branch": "master", "commit": "e94a2bee4142bc044b27513bbfdddaba05bcacee" },
   "smart-splits.nvim": { "branch": "master", "commit": "c29547c7f144adc3387f2717626422e6b0027a08" },
-  "symbols-outline.nvim": { "branch": "master", "commit": "564ee65dfc9024bdde73a6621820866987cbb256" },
   "telescope.nvim": { "branch": "master", "commit": "6312868392331c9c0f22725041f1ec2bef57c751" },
   "tree-sitter-nu": { "branch": "main", "commit": "fae35745e32c015dc342136802f63b8456ccec7f" }
 }
