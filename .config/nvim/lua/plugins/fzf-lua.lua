@@ -83,6 +83,7 @@ return {
       vim.keymap.set("n", "fp", lua .. ".grep_project" .. resume_option, silent)
       vim.keymap.set("n", "fd", lua .. ".lsp_document_symbols" .. resume_option, silent)
       vim.keymap.set("n", "fe", lua .. ".buffers" .. resume_option, silent)
+      vim.keymap.set("n", "fh", lua .. ".lsp_live_workspace_symbols" .. resume_option, silent)
 
       _G.fzf_dirs = function(opts)
          _G.fzf_cd_with("fd --hidden --type d", opts)
@@ -109,6 +110,10 @@ return {
       end
 
       _G.fzf_cd_with = function(command, opts)
+         if _G.fzf_cd_with_active then
+            return
+         end
+         _G.fzf_cd_with_active = true
          local fzf_lua = require 'fzf-lua'
          opts = opts or {}
          opts.prompt = "Zoxide> "
@@ -121,6 +126,7 @@ return {
             end
          }
          fzf_lua.fzf_exec(command, opts)
+         _G.fzf_cd_with_active = false
       end
 
       -- map our provider to a user command ':Directories'
@@ -129,8 +135,8 @@ return {
       vim.cmd([[command! -nargs=* Session lua _G.fzf_session_dirs()]])
       -- or to a keybind, both below are (sort of) equal
       -- vim.keymap.set('n', '<C-k>', _G.fzf_dirs)
-      vim.keymap.set('n', '<C-k>', '<cmd>lua _G.fzf_dirs()<CR>')
-      vim.keymap.set('n', '<C-z>', '<cmd>lua _G.fzf_zoxide_dirs()<CR>')
+      --  vim.keymap.set('n', '<C-k>', '<cmd>lua _G.fzf_dirs()<CR>')
+      vim.keymap.set('n', '<C-x>', '<cmd>lua _G.fzf_zoxide_dirs()<CR>')
       vim.keymap.set("n", "fb", '<cmd>lua _G.fzf_fb()<CR>', silent)
       vim.keymap.set("n", "fs", '<cmd>lua _G.fzf_session_dirs()<CR>', silent) -- We can also send call options directly
       -- :lua _G.fzf_dirs({ cwd = <other directory> })
