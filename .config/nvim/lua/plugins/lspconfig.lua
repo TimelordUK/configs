@@ -11,6 +11,7 @@ return {
       }
    },
    config = function()
+      vim.keymap.set('n', '<leader>nb', '<cmd>Navbuddy<cr>')
       local lspconfig = require('lspconfig')
       lspconfig.lua_ls.setup {
          on_init = function(client)
