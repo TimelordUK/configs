@@ -43,6 +43,8 @@ return
             p = { "<cmd>lua require('dap-python').test_method()<CR>", "debug python" },
             b = { "<cmd>DapToggleBreakpoint<CR>", "breakpoint" },
             i = { "<cmd>DapStepInto<CR>", "step into" },
+            m = { "<cmd>lua require('dap-python').test_method()<CR>", "test method" },
+            l = { "<cmd>lua require('dap-python').test_class()<CR>", "test class" },
             n = { "<cmd>DapStepOver<CR>", "step over" },
             t = { "<cmd>DapTerminate<CR>", "dap terminate" },
             s = { "<cmd>DapStepOut<CR>", "step out" },
