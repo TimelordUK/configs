@@ -56,7 +56,7 @@ return
          d = {
             name = ".dap", -- optional group name
             o = { "<cmd>lua require('dapui').open()<CR>", "open dapui" },
-            e = { "<cmd>lua require('dapui').close()<CR>", "close dapui" },
+            x = { "<cmd>lua require('dapui').close()<CR>", "close dapui" },
             p = { "<cmd>lua require('dap-python').test_method()<CR>", "debug python" },
             b = { "<cmd>DapToggleBreakpoint<CR>", "breakpoint" },
             i = { "<cmd>DapStepInto<CR>", "step into" },
@@ -69,6 +69,7 @@ return
             c = { "<cmd>lua require('dap').continue()<CR>", "continue" },
             u = { "<cmd>lua require('dap').up()<CR>", "up frame" },
             d = { "<cmd>lua require('dap').down()<CR>", "down frame" },
+            e = { "<cmd>lua require('dapui').eval()<CR>", "expression" },
          },
       }, {
          prefix = "<leader>"
