@@ -31,6 +31,10 @@ return
       -- .rc or
       -- .reverse-continue   Same as |dap.reverse_continue|
       --
+      vim.keymap.set('n', '<F10>', '<cmd>DapStepOver<CR>')
+      vim.keymap.set('n', '<F11>', '<cmd>DapStepInto<CR>')
+      vim.keymap.set('n', '<F5>', "<cmd>lua require('dap').continue()<CR>")
+
       wk.register({
          d = {
             name = ".dap", -- optional group name
