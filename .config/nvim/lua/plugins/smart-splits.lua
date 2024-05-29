@@ -1,21 +1,38 @@
 return {
-   'mrjones2014/smart-splits.nvim',
-   config = function()
-      --require('smart-splits').setupa({})
-      vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
-      vim.keymap.set('n', '<A-j>', require('smart-splits').resize_down)
-      vim.keymap.set('n', '<A-k>', require('smart-splits').resize_up)
-      vim.keymap.set('n', '<A-l>', require('smart-splits').resize_right)
-      -- moving between splits
-      vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
-      vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
-      vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
-      vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
-      vim.keymap.set('n', '<C-\\>', require('smart-splits').move_cursor_previous)
-      -- swapping buffers between windows
-      vim.keymap.set('n', '<leader><leader>h', require('smart-splits').swap_buf_left)
-      vim.keymap.set('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
-      vim.keymap.set('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
-      vim.keymap.set('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
-   end
+	"mrjones2014/smart-splits.nvim",
+	config = function()
+		--require('smart-splits').setupa({})
+		local wk = require("which-key")
+		wk.register({
+			A = {
+				name = ".resize-split", -- optional group name
+				h = { "<cmd>lua ", "grep buffer" },
+			},
+			--prefix = "<leader>",
+		})
+		local ss = require("smart-splits")
+		wk.register({
+			-- resize
+
+			["<A-h>"] = { ss.resize_left, "resize left" },
+			["<A-j>"] = { ss.resize_down, "resize down" },
+			["<A-k>"] = { ss.resize_up, "resize up" },
+			["<A-l>"] = { ss.resize_right, "resize right" },
+
+			-- moving between splits
+
+			["<C-h>"] = { ss.move_cursor_left, "move left" },
+			["<C-j>"] = { ss.move_cursor_down, "move down" },
+			["<C-k>"] = { ss.move_cursor_right, "move up" },
+			["<C-l>"] = { ss.move_cursor_right, "move right" },
+			["<A-\\>"] = { ss.move_cursor_previous, "move previous" },
+
+			-- swapping buffers between windows
+
+			["<leader><leader>h"] = { ss.swap_buf_left, "swap left" },
+			["<leader><leader>j"] = { ss.swap_buf_down, "swap down" },
+			["<leader><leader>k"] = { ss.swap_buf_up, "swap up" },
+			["<leader><leader>l"] = { ss.swap_buf_right, "swap right" },
+		})
+	end,
 }
