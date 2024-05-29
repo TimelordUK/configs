@@ -31,11 +31,14 @@ return {
 		-- .rc or
 		-- .reverse-continue   Same as |dap.reverse_continue|
 		--
-		vim.keymap.set("n", "<F8>", "<cmd>DapStepOver<CR>")
-		vim.keymap.set("n", "<S-F8>", "<cmd>DapStepOut<CR>")
-		vim.keymap.set("n", "<F10>", "<cmd>DapStepOut<CR>")
-		vim.keymap.set("n", "<F7>", "<cmd>DapStepInto<CR>")
-		vim.keymap.set("n", "<F5>", "<cmd>lua require('dap').continue()<CR>")
+		--
+		wk.register({
+			-- quick debug
+			["<F8>"] = { "<cmd>DapStepOver<CR>", "step over" },
+			["<F7>"] = { "<cmd>DapStepInto<CR>", "step into" },
+			["<F10>"] = { "<cmd>DapStepOut<CR>", "step out" },
+			["<F5>"] = { "<cmd>lua require('dap').continue()<CR>", "continue" },
+		})
 
 		local dap, dapui = require("dap"), require("dapui")
 		dap.listeners.before.attach.dapui_config = function()
