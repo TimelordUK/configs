@@ -150,6 +150,7 @@ return {
 				f = { lua .. ".files({})<CR>", "Open folder file" },
 				g = { lua .. ".git_status" .. resume_option, "git status" },
 				h = { lua .. ".command_history" .. resume_option, "command history" },
+				k = { lua .. ".keymaps" .. resume_option, "keymaps" },
 				o = { lua .. ".files({cwd='~/.config'})<CR>", "Open config file" },
 				m = { lua .. ".git_commits" .. resume_option, "git commits" },
 				p = { lua .. ".grep_project" .. resume_option, "grep project" },
