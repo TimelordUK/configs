@@ -22,6 +22,7 @@ return {
 				q = { builtin.quickfix, "quickfix" },
 				e = { builtin.buffers, "buffers" },
 				m = { builtin.man_pages, "man pages" },
+				i = { "<cmd>Telescope neoclip<CR>", "neoclip" },
 				h = { builtin.help_tags, "help tags" },
 				r = { builtin.registers, "registers" },
 				y = { builtin.filetypes, "filetypes" },
