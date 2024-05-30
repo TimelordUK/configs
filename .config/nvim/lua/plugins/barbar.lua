@@ -6,36 +6,70 @@ return {
 	},
 	--   init = function() vim.g.barbar_auto_setup = false end,
 	config = function()
-		local map = vim.api.nvim_set_keymap
-		local options = { noremap = true, silent = true }
+		local wk = require("which-key")
 
-		-- Move to previous/next
-		map("n", "<A-,>", "<Cmd>BufferPrevious<CR>", options)
-		map("n", "<A-.>", "<Cmd>BufferNext<CR>", options)
-		-- Re-order to previous/next
-		map("n", "<A-<>", "<Cmd>BufferMovePrevious<CR>", options)
-		map("n", "<A->>", "<Cmd>BufferMoveNext<CR>", options)
-		-- Goto buffer in position...
-		map("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", options)
-		map("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", options)
-		map("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", options)
-		map("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", options)
-		map("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", options)
-		map("n", "<A-6>", "<Cmd>BufferGoto 6<CR>", options)
-		map("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", options)
-		map("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", options)
-		map("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", options)
-		map("n", "<A-0>", "<Cmd>BufferLast<CR>", options)
-		-- Pin/unpin buffer
-		map("n", "<A-p>", "<Cmd>BufferPin<CR>", options)
-		-- Close buffer
-		map("n", "<A-c>", "<Cmd>BufferClose<CR>", options)
+		wk.register({
+			name = ".barbar select",
+			-- Move to previous/next
+			["<A-,>"] = { "<Cmd>BufferPrevious<CR>", "goto prev buffer" },
+			["<A-.>"] = { "<Cmd>BufferNext<CR>", "goto next buffer" },
+			-- Re-order to previous/next
+			["<A-<>"] = { "<Cmd>BufferMovePrevious<CR>", "move buffer left" },
+			["<A->>"] = { "<Cmd>BufferMoveNext<CR>", "move buffer right" },
+			-- Goto buffer in position...
+			["<A-1>"] = { "<Cmd>BufferGoto 1<CR>", "goto buffer 1" },
+			["<A-2>"] = { "<Cmd>BufferGoto 2<CR>", "goto buffer 2" },
+			["<A-3>"] = { "<Cmd>BufferGoto 3<CR>", "goto buffer 3" },
+			["<A-4>"] = { "<Cmd>BufferGoto 4<CR>", "goto buffer 4" },
+			["<A-5>"] = { "<Cmd>BufferGoto 5<CR>", "goto buffer 5" },
+			["<A-6>"] = { "<Cmd>BufferGoto 6<CR>", "goto buffer 6" },
+			["<A-7>"] = { "<Cmd>BufferGoto 7<CR>", "goto buffer 7" },
+			["<A-8>"] = { "<Cmd>BufferGoto 8<CR>", "goto buffer 8" },
+			["<A-9>"] = { "<Cmd>BufferGoto 9<CR>", "goto buffer 9" },
+			["<A-0>"] = { "<Cmd>BufferLast<CR>", "goto last buffer" },
+			-- Pin/unpin buffer
+			["<A-p>"] = { "<Cmd>BufferPin<CR>", "toggle pin buffer" },
+			-- Close buffer
+			["<A-c>"] = { "<Cmd>BufferClose<CR>", "close buffer" },
+			-- Magic buffer-picking mode
+			["<C-p>"] = { "<Cmd>BufferPick<CR>", "magic buffer pick" },
+		})
 
-		map("n", "<leader>ca", "<Cmd>BufferCloseAllButCurrentOrPinned<CR>", options) -- Wipeout buffer
-		map("n", "<leader>cl", "<Cmd>BufferCloseBuffersLeft<CR>", options) -- Wipeout buffer
-		map("n", "<leader>cr", "<Cmd>BufferCloseBuffersRight<CR>", options) -- Wipeout buffer
-		map("n", "<leader>cc", "<Cmd>BufferCloseAllButCurrent<CR>", options) -- Wipeout buffer
-		--
+		-- Close commands
+		wk.register({
+			c = {
+				name = ".barbar close", -- optional group name
+				a = { "<cmd>BufferCloseAllButCurrentOrPinned<CR>", "kill all but curr/pin buf" },
+				c = { "<cmd>BufferCloseAllButCurrent<CR>", "kill all but curr buf" },
+				l = { "<cmd>BufferCloseBuffersLeft<CR>", "kill all left" },
+				r = { "<cmd>BufferCloseBuffersRight<CR>", "kill all right" },
+				w = { "<cmd>BufferWipeout<CR>", "wipeout current" },
+			},
+		}, {
+			prefix = "<leader>",
+		})
+
+		-- scroll commands
+		wk.register({
+			name = ".barbar scroll", -- optional group name
+			l = { "<cmd>BufferScrollLeft<CR>", "scroll left" },
+			r = { "<cmd>BufferScrollRight<CR>", "scroll right" },
+		}, {
+			prefix = "ss",
+		})
+
+		-- Sort automatically by...
+		wk.register({
+			name = ".barbar sort",
+			bb = { "<Cmd>BufferOrderByBufferNumber<CR>", "sort by buffer num" },
+			bn = { "<Cmd>BufferOrderByName<CR>", "sort by name" },
+			bd = { "<Cmd>BufferOrderByDirectory<CR>", "sort by directory" },
+			bl = { "<Cmd>BufferOrderByLanguage<CR>", "sort by language" },
+			bw = { "<Cmd>BufferOrderByWindowNumber<CR>", "sort by window num" },
+		}, {
+			prefix = "<Space>",
+		})
+
 		--                 :BufferWipeout
 		-- Close commands
 		--                 :BufferCloseAllButCurrent
@@ -44,13 +78,8 @@ return {
 		--                 :BufferCloseBuffersLeft
 		--                 :BufferCloseBuffersRight
 		-- Magic buffer-picking mode
-		map("n", "<C-p>", "<Cmd>BufferPick<CR>", options)
+		-- map("n", "<C-p>", "<Cmd>BufferPick<CR>", options)
 		-- Sort automatically by...
-		map("n", "<Space>bb", "<Cmd>BufferOrderByBufferNumber<CR>", options)
-		map("n", "<Space>bn", "<Cmd>BufferOrderByName<CR>", options)
-		map("n", "<Space>bd", "<Cmd>BufferOrderByDirectory<CR>", options)
-		map("n", "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", options)
-		map("n", "<Space>bw", "<Cmd>BufferOrderByWindowNumber<CR>", options)
 
 		-- Other:
 		-- :BarbarEnable - enables barbar (enabled by default)
