@@ -60,12 +60,14 @@ return {
 
 		-- Sort automatically by...
 		wk.register({
-			name = ".barbar sort",
-			bb = { "<Cmd>BufferOrderByBufferNumber<CR>", "sort by buffer num" },
-			bn = { "<Cmd>BufferOrderByName<CR>", "sort by name" },
-			bd = { "<Cmd>BufferOrderByDirectory<CR>", "sort by directory" },
-			bl = { "<Cmd>BufferOrderByLanguage<CR>", "sort by language" },
-			bw = { "<Cmd>BufferOrderByWindowNumber<CR>", "sort by window num" },
+			b = {
+				name = ".barbar sort",
+				b = { "<Cmd>BufferOrderByBufferNumber<CR>", "sort by buffer num" },
+				n = { "<Cmd>BufferOrderByName<CR>", "sort by name" },
+				d = { "<Cmd>BufferOrderByDirectory<CR>", "sort by directory" },
+				l = { "<Cmd>BufferOrderByLanguage<CR>", "sort by language" },
+				w = { "<Cmd>BufferOrderByWindowNumber<CR>", "sort by window num" },
+			},
 		}, {
 			prefix = "<Space>",
 		})
