@@ -157,6 +157,7 @@ return {
 				s = { "<cmd>lua _G.fzf_session_dirs()<CR>", "sessions" },
 				t = { lua .. ".tags" .. resume_option, "grep project" },
 				w = { lua .. ".lsp_live_workspace_symbols" .. resume_option, "lsp workspace sym" },
+				y = { lua .. ".filetypes" .. resume_option, "buffers" },
 				z = { "<cmd>lua _G.fzf_zoxide_dirs()<CR>", "zoxide" },
 			},
 		}, {
