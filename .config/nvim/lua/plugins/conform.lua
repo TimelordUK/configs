@@ -5,7 +5,7 @@ return {
 	keys = {
 		{
 			-- Customize or remove this keymap to your liking
-			"<leader>ft",
+			"<leader><leader>f",
 			function()
 				require("conform").format({ async = true, lsp_fallback = true })
 			end,
@@ -23,7 +23,7 @@ return {
 			typescript = { { "typescript-formatter" } },
 		},
 		-- Set up format-on-save
-		format_on_save = { timeout_ms = 500, lsp_fallback = true },
+		format_on_save = { timeout_ms = 900, lsp_fallback = true },
 		-- Customize formatters
 		formatters = {
 			shfmt = {
