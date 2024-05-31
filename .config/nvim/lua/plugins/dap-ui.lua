@@ -41,6 +41,7 @@ return {
 		})
 
 		local dap, dapui = require("dap"), require("dapui")
+		local dappy = require("dap-python")
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
 		end
@@ -57,21 +58,21 @@ return {
 		wk.register({
 			d = {
 				name = ".dap", -- optional group name
-				o = { "<cmd>lua require('dapui').open()<CR>", "open dapui" },
-				x = { "<cmd>lua require('dapui').close()<CR>", "close dapui" },
-				p = { "<cmd>lua require('dap-python').test_method()<CR>", "debug python" },
+				o = { dapui.open, "open dapui" },
+				x = { dapui.close, "close dapui" },
+				p = { dappy.test_method, "debug python" },
 				b = { "<cmd>DapToggleBreakpoint<CR>", "breakpoint" },
 				i = { "<cmd>DapStepInto<CR>", "step into" },
-				m = { "<cmd>lua require('dap-python').test_method()<CR>", "test method" },
-				l = { "<cmd>lua require('dap-python').test_class()<CR>", "test class" },
+				m = { dappy.test_method, "test method" },
+				l = { dappy.test_class, "test class" },
 				n = { "<cmd>DapStepOver<CR>", "step over" },
 				t = { "<cmd>DapTerminate<CR>", "dap terminate" },
 				s = { "<cmd>DapStepOut<CR>", "step out" },
 				h = { ".scopes .threads .frames .up .down" },
-				c = { "<cmd>lua require('dap').continue()<CR>", "continue" },
-				u = { "<cmd>lua require('dap').up()<CR>", "up frame" },
-				d = { "<cmd>lua require('dap').down()<CR>", "down frame" },
-				e = { "<cmd>lua require('dapui').eval()<CR>", "expression" },
+				c = { dap.continue, "continue" },
+				u = { dap.up, "up frame" },
+				d = { dap.down, "down frame" },
+				e = { dapui.eval, "expression" },
 			},
 		}, {
 			prefix = "<leader>",
