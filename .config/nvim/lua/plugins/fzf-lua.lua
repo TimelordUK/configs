@@ -128,14 +128,6 @@ return {
 		vim.cmd([[command! -nargs=* Session lua _G.fzf_session_dirs()]])
 
 		wk.register({
-			z = {
-				name = ".tst", -- optional group name
-				b = { "<cmd>lua _G.fzf_fb()<CR>", "grep buffer" },
-				z = { "<cmd>lua _G.fzf_zoxide_dirs()<CR>", "zoxide" },
-			},
-		})
-
-		wk.register({
 			f = {
 				name = ".fzf", -- optional group name
 				q = {

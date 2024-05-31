@@ -29,6 +29,7 @@ return {
 
 			-- swapping buffers between windows
 
+			["<leader>ss"] = { ss.start_resize_mode, "smart resize mode" },
 			["<leader><leader>h"] = { ss.swap_buf_left, "swap left" },
 			["<leader><leader>j"] = { ss.swap_buf_down, "swap down" },
 			["<leader><leader>k"] = { ss.swap_buf_up, "swap up" },

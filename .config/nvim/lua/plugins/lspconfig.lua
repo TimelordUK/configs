@@ -109,15 +109,6 @@ return {
 		-- you can add this in your init.lua
 		-- (note: diagnostics are not exclusive to LSP)
 
-		-- Show diagnostics in a floating window
-		-- vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
-
-		-- Move to the previous diagnostic
-		-- vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
-
-		-- Move to the next diagnostic
-		-- vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
-
 		local setup_bindings = function(event)
 			local bufmap = function(mode, lhs, rhs)
 				local opts = { buffer = event.buf }

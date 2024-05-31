@@ -24,7 +24,7 @@ return {
 			R = { ufo.openAllFolds, "open all folds" },
 			M = { ufo.closeAllFolds, "close all folds" },
 			m = { ufo.closeFoldsWith, "close folds with" },
-			t = { '<cmd>lua require("ufo").closeFoldsWith(1)<CR>', "fold all but 1" },
+			o = { '<cmd>lua require("ufo").closeFoldsWith(1)<CR>', "fold all but 1" },
 			p = { peek, "preview fold" },
 		}, {
 			prefix = "z",
