@@ -110,13 +110,13 @@ return {
 		-- (note: diagnostics are not exclusive to LSP)
 
 		-- Show diagnostics in a floating window
-		vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
+		-- vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
 
 		-- Move to the previous diagnostic
-		vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
+		-- vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
 
 		-- Move to the next diagnostic
-		vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
+		-- vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 
 		local setup_bindings = function(event)
 			local bufmap = function(mode, lhs, rhs)
@@ -140,6 +140,8 @@ return {
 					D = { vim.lsp.buf.declaration, "jump declaration" },
 					-- Lists all the implementations for the symbol under the cursor
 					i = { vim.lsp.buf.implementation, "list implementations" },
+					-- Show diagnostics in a floating window
+					l = { vim.diagnostic.open_float, "diag in float" },
 					-- Jumps to the definition of the type symbol
 					o = { vim.lsp.buf.type_definition, "jump type symbol" },
 					-- Lists all the references
@@ -147,17 +149,22 @@ return {
 				},
 			})
 
-			-- Display documentation of the symbol under the cursor
-			bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")
-
-			-- Renames all references to the symbol under the cursor
-			bufmap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
-
-			-- Format current file
-			bufmap("n", "<F3>", "<cmd>lua vim.lsp.buf.format()<cr>")
-
-			-- Selects a code action available at the current cursor position
-			bufmap("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+			wk.register({
+				-- Trigger code completion
+				-- ["<C_Space"] = { "<C-x><C-o>", "code complete" },
+				-- Display documentation of the symbol under the cursor
+				K = { vim.lsp.buf.hover, "hover symbol" },
+				-- Renames all references to the symbol under the cursor
+				["<F2>"] = { vim.lsp.buf.rename, "rename symbol" },
+				-- Format current file
+				["<F3>"] = { vim.lsp.buf.format, "reformat" },
+				-- Selects a code action available at the current cursor position
+				["<F4>"] = { vim.lsp.buf.code_action, "code action" },
+				-- Move to the previous diagnostic
+				["[d"] = { vim.diagnostic.goto_prev, "prev diag" },
+				-- Move to the next diagnostic
+				["]d"] = { vim.diagnostic.goto_next, "goto diag" },
+			})
 		end
 		local function bind_lsp(event)
 			vim.schedule(function()
