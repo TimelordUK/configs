@@ -144,7 +144,7 @@ return {
 					end,
 					"Foobar",
 				}, -- you can also pass functions!
-				b = { "<cmd>lua _G.fzf_fb()<CR>", "grep buffer" },
+				b = { _G.fzf_fb, "grep buffer" },
 				d = { lua .. ".lsp_document_symbols" .. resume_option, "lsp doc symbols" },
 				e = { lua .. ".buffers" .. resume_option, "buffers" },
 				f = { lua .. ".files({})<CR>", "Open folder file" },
@@ -154,11 +154,11 @@ return {
 				o = { lua .. ".files({cwd='~/.config'})<CR>", "Open config file" },
 				m = { lua .. ".git_commits" .. resume_option, "git commits" },
 				p = { lua .. ".grep_project" .. resume_option, "grep project" },
-				s = { "<cmd>lua _G.fzf_session_dirs()<CR>", "sessions" },
+				s = { _G.fzf_session_dirs, "sessions" },
 				t = { lua .. ".tags" .. resume_option, "grep project" },
 				w = { lua .. ".lsp_live_workspace_symbols" .. resume_option, "lsp workspace sym" },
 				y = { lua .. ".filetypes" .. resume_option, "buffers" },
-				z = { "<cmd>lua _G.fzf_zoxide_dirs()<CR>", "zoxide" },
+				z = { _G.fzf_zoxide_dirs, "zoxide" },
 			},
 		}, {
 			prefix = "<leader>",
