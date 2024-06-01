@@ -86,16 +86,16 @@ return {
 				end)
 			end
 
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = "cpp",
-				callback = function()
-					start_lsp({
-						name = "clangd",
-						cmd = { "clangd" },
-					})
-				end,
-			})
-
+			-- vim.api.nvim_create_autocmd("FileType", {
+			-- 	pattern = "cpp",
+			-- 	callback = function()
+			-- 		start_lsp({
+			-- 			name = "clangd",
+			-- 			cmd = { "clangd" },
+			-- 		})
+			-- 	end,
+			-- })
+			--
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = "json",
 				callback = function()
@@ -130,6 +130,7 @@ return {
 			lspconf.jdtls.setup(capabilities)
 			lspconf.bashls.setup(vim.lsp.protocol.make_client_capabilities())
 			lspconf.perlls.setup(capabilities)
+			lspconf.clangd.setup(capabilities)
 
 			-- you can add this in your init.lua
 			-- (note: diagnostics are not exclusive to LSP)
@@ -211,7 +212,6 @@ return {
 			sources = cmp.config.sources({
 				{ name = "ultisnips" }, -- For ultisnips users.
 				{ name = "nvim_lsp" },
-				{ name = "vsnip" }, -- For vsnip users.
 				{ name = "buffer" },
 				{ name = "nvim_lsp_signature_help" },
 				-- { name = 'luasnip' }, -- For luasnip users.
