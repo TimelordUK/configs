@@ -25,12 +25,10 @@ return {
 		{
 			"quangnguyen30192/cmp-nvim-ultisnips",
 			init = function()
-				vim.g.UltiSnipsExpandTriggerOrJump = "<c-s>"
-				vim.g.UltiSnipsExpandTrigger = "<c-s>"
 				vim.g.UltiSnipsJumpForwardTrigger = "<c-j>"
 				vim.g.UltiSnipsJumpBackwardTrigger = "<c-k>"
-				vim.g.UltiSnipsEditSplit = "horizontal"
-				vim.g.UltiSnipsListSnippets = "<c-;>"
+				-- vim.g.UltiSnipsEditSplit = "horizontal"
+				-- vim.g.UltiSnipsListSnippets = "<c-;>"
 				vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", "~/.config/nvim/UltiSnips" }
 			end,
 		},
