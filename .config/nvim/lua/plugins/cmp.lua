@@ -30,6 +30,12 @@ return {
 			end,
 		},
 		{
+			"lewis6991/gitsigns.nvim",
+			init = function()
+				require("gitsigns").setup()
+			end,
+		},
+		{
 			"quangnguyen30192/cmp-nvim-ultisnips",
 			init = function()
 				vim.g.UltiSnipsJumpForwardTrigger = "<c-j>"
