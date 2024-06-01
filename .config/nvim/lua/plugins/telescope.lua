@@ -22,7 +22,7 @@ return {
 					function()
 						builtin.current_buffer_fuzzy_find({
 							layout_strategy = "vertical",
-							layout_config = { width = 0.9, height = 0.8 },
+							layout_config = { width = 0.9, height = 0.9 },
 						})
 					end,
 					"current buffer",
@@ -40,6 +40,10 @@ return {
 			prefix = "<leader>",
 		})
 		telescope.setup({
+			defaults = {
+				layout_strategy = "horizontal",
+				layout_config = { width = 0.9, height = 0.9 },
+			},
 			extensions = {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown({
