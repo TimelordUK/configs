@@ -22,14 +22,20 @@ return {
 		{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 		{ "honza/vim-snippets" },
 		{ "SirVer/ultisnips" },
-		{ "quangnguyen30192/cmp-nvim-ultisnips" },
+		{
+			"quangnguyen30192/cmp-nvim-ultisnips",
+			init = function()
+				vim.g.UltiSnipsExpandTriggerOrJump = "<c-s>"
+				vim.g.UltiSnipsExpandTrigger = "<c-s>"
+				vim.g.UltiSnipsJumpForwardTrigger = "<c-j>"
+				vim.g.UltiSnipsJumpBackwardTrigger = "<c-k>"
+				vim.g.UltiSnipsEditSplit = "horizontal"
+				vim.g.UltiSnipsListSnippets = "<c-;>"
+				vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", "~/.config/nvim/UltiSnips" }
+			end,
+		},
 	},
 	init = function()
-		vim.g.UltiSnipsExpandTrigger = "<c-s>"
-		vim.g.UltiSnipsJumpForwardTrigger = "<c-j>"
-		vim.g.UltiSnipsJumpBackwardTrigger = "<c-k>"
-		vim.g.UltiSnipsEditSplit = "horizontal"
-		vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", "~/.config/nvim/UltiSnips" }
 		local lsps = function()
 			vim.keymap.set("n", "<leader>nb", "<cmd>Navbuddy<cr>")
 			local lspconf = require("lspconfig")
