@@ -53,6 +53,7 @@
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "tree-sitter-nu": { "branch": "main", "commit": "fae35745e32c015dc342136802f63b8456ccec7f" },
   "ultisnips": { "branch": "master", "commit": "49dc8cb2086db19d385791c8e1635723b0fd95c7" },
+  "vim-illuminate": { "branch": "master", "commit": "5eeb7951fc630682c322e88a9bbdae5c224ff0aa" },
   "vim-snippets": { "branch": "master", "commit": "a1f605c302c6a6b2346de5eca245c0406fef13ba" },
   "which-key.nvim": { "branch": "main", "commit": "4b7167f8fb2dba3d01980735e3509e172c024c29" },
   "yanky.nvim": { "branch": "main", "commit": "79338563e85a868e59cda02c51b54d90a5514a12" }

@@ -21,6 +21,7 @@ return {
 		{ "hrsh7th/nvim-cmp" },
 		{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 		{ "honza/vim-snippets" },
+		{ "RRethy/vim-illuminate" },
 		{ "SirVer/ultisnips" },
 		{
 			"quangnguyen30192/cmp-nvim-ultisnips",
@@ -86,16 +87,6 @@ return {
 				end)
 			end
 
-			-- vim.api.nvim_create_autocmd("FileType", {
-			-- 	pattern = "cpp",
-			-- 	callback = function()
-			-- 		start_lsp({
-			-- 			name = "clangd",
-			-- 			cmd = { "clangd" },
-			-- 		})
-			-- 	end,
-			-- })
-			--
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = "json",
 				callback = function()
@@ -116,19 +107,13 @@ return {
 				end,
 			})
 
-			-- local capabilities = vim.lsp.protocol.make_client_capabilities()
-			-- capabilities.textDocument.foldingRange = {
-			-- 	dynamicRegistration = false,
-			-- 	lineFoldingOnly = true,
-			-- }
-			--
 			lspconf.pyright.setup(capabilities)
 			lspconf.tsserver.setup(capabilities)
 			lspconf.nushell.setup(capabilities)
 			lspconf.yamlls.setup(capabilities)
 			lspconf.gopls.setup(capabilities)
 			lspconf.jdtls.setup(capabilities)
-			lspconf.bashls.setup(vim.lsp.protocol.make_client_capabilities())
+			lspconf.bashls.setup(capabilities)
 			lspconf.perlls.setup(capabilities)
 			lspconf.clangd.setup(capabilities)
 
