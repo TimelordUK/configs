@@ -24,6 +24,12 @@ return {
 		{ "RRethy/vim-illuminate" },
 		{ "SirVer/ultisnips" },
 		{
+			"petertriho/nvim-scrollbar",
+			init = function()
+				require("scrollbar").setup()
+			end,
+		},
+		{
 			"quangnguyen30192/cmp-nvim-ultisnips",
 			init = function()
 				vim.g.UltiSnipsJumpForwardTrigger = "<c-j>"
