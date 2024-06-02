@@ -63,6 +63,24 @@ return {
 				vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", "~/.config/nvim/UltiSnips" }
 			end,
 		},
+		{
+			"nvim-neo-tree/neo-tree.nvim",
+			branch = "v3.x",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+				"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+				"MunifTanjim/nui.nvim",
+				-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+			},
+			config = function()
+				local wk = require("which-key")
+				wk.register({
+					name = ".neotree", -- optional group name
+					["-"] = { "<cmd>Neotree<CR> ", "neotree" },
+					prefix = "<leader><leader>",
+				})
+			end,
+		},
 	},
 	init = function()
 		local lsps = function()
