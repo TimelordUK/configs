@@ -23,7 +23,7 @@ return {
 
 			["<C-h>"] = { ss.move_cursor_left, "move left" },
 			["<C-j>"] = { ss.move_cursor_down, "move down" },
-			["<C-k>"] = { ss.move_cursor_right, "move up" },
+			["<C-k>"] = { ss.move_cursor_up, "move up" },
 			["<C-l>"] = { ss.move_cursor_right, "move right" },
 			["<A-\\>"] = { ss.move_cursor_previous, "move previous" },
 
