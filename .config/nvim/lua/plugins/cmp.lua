@@ -24,6 +24,14 @@ return {
 				vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 			end,
 		},
+		{
+			"echasnovski/mini.files",
+			version = "*",
+			init = function()
+				require("mini.files").setup()
+				vim.keymap.set("n", "<leader>-", "<CMD>lua MiniFiles.open()<CR>", { desc = "Open mini" })
+			end,
+		},
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "hrsh7th/cmp-buffer" },
 		{ "hrsh7th/cmp-path" },
