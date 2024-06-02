@@ -1,0 +1,14 @@
+snippet simple  "simple snippet" b
+hello(${1:${VISUAL:expression}})
+endsnippet
+
+snippet rwp "Read Write Property" b
+@property
+def ${1:name}(self):
+	${2:return self._$1}$0
+
+@$1.setter
+def $1(self, ${2:val}):
+	self._$1 = $2
+endsnippet
+

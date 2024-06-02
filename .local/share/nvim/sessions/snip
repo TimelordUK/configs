@@ -1,0 +1,927 @@
+let SessionLoad = 1
+let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
+let v:this_session=expand("<sfile>:p")
+silent only
+silent tabonly
+cd ~/dev/configs/.local/share/nvim/sessions
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+let s:shortmess_save = &shortmess
+if &shortmess =~ 'A'
+  set shortmess=aoOA
+else
+  set shortmess=aoO
+endif
+badd +9 ~/dev/configs/.config/nvim/UltiSnips/python.snippets
+badd +24 ~/dev/configs/tester.py
+badd +184 ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/r.snippets
+badd +10 ~/dev/configs/.config/nvim/lua/plugins/sessions.lua
+badd +592 ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/python.snippets
+argglobal
+%argdel
+edit ~/dev/configs/.config/nvim/UltiSnips/python.snippets
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 22 + 25) / 50)
+exe 'vert 1resize ' . ((&columns * 110 + 104) / 208)
+exe '2resize ' . ((&lines * 24 + 25) / 50)
+exe 'vert 2resize ' . ((&columns * 110 + 104) / 208)
+exe '3resize ' . ((&lines * 23 + 25) / 50)
+exe 'vert 3resize ' . ((&columns * 97 + 104) / 208)
+exe '4resize ' . ((&lines * 23 + 25) / 50)
+exe 'vert 4resize ' . ((&columns * 97 + 104) / 208)
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-,fb:���
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t
+setlocal completefunc=
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal nocopyindent
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'snippets'
+setlocal filetype=snippets
+endif
+setlocal fillchars=fold:\ 
+setlocal fixendofline
+setlocal foldcolumn=1
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=v:lua.require'ufo.main'.foldtext()
+setlocal formatexpr=v:lua.require'conform'.formatexpr()
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=tcqj
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispoptions=
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal relativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal scrollback=-1
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=3
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal nosmoothscroll
+setlocal softtabstop=3
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\\t\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=
+setlocal statuscolumn=
+setlocal statusline=%<%#lualine_c_inactive#\ python.snippets\ [+]\ %#lualine_c_inactive#%=%#lualine_c_inactive#\ \ 12:1\ \ 
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'snippets'
+setlocal syntax=snippets
+endif
+setlocal tabstop=3
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal winbar=
+setlocal winblend=0
+setlocal nowinfixbuf
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal winhighlight=
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+6,7fold
+10,11fold
+let &fdl = &fdl
+let s:l = 12 - ((11 * winheight(0) + 11) / 22)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 12
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/.local/share/nvim/lazy/vim-snippets/UltiSnips/python.snippets", ":p")) | buffer ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/python.snippets | else | edit ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/python.snippets | endif
+if &buftype ==# 'terminal'
+  silent file ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/python.snippets
+endif
+balt ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/r.snippets
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-,fb:���
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t
+setlocal completefunc=
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal nocopyindent
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'snippets'
+setlocal filetype=snippets
+endif
+setlocal fillchars=fold:\ 
+setlocal fixendofline
+setlocal foldcolumn=1
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=v:lua.require'ufo.main'.foldtext()
+setlocal formatexpr=v:lua.require'conform'.formatexpr()
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=tcqj
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispoptions=
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal relativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal scrollback=-1
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=3
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal nosmoothscroll
+setlocal softtabstop=3
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\\t\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=
+setlocal statuscolumn=
+setlocal statusline=%<%#lualine_c_inactive#\ python.snippets\ %#lualine_c_inactive#%=%#lualine_c_inactive#\ 608:3\ \ 
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'snippets'
+setlocal syntax=snippets
+endif
+setlocal tabstop=3
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal winbar=
+setlocal winblend=0
+setlocal nowinfixbuf
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal winhighlight=
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+30,31fold
+35,36fold
+41,42fold
+67,71fold
+73,74fold
+76,77fold
+79,80fold
+82,83fold
+66,83fold
+94,95fold
+96,97fold
+93,98fold
+100,101fold
+90,102fold
+86,106fold
+111,112fold
+109,113fold
+117,118fold
+115,119fold
+140,141fold
+142,143fold
+144,146fold
+147,148fold
+139,148fold
+127,149fold
+150,151fold
+121,151fold
+153,161fold
+165,166fold
+167,168fold
+169,170fold
+171,172fold
+173,174fold
+175,176fold
+164,176fold
+180,181fold
+182,183fold
+184,185fold
+179,185fold
+189,191fold
+197,198fold
+199,200fold
+202,203fold
+201,203fold
+188,203fold
+213,214fold
+210,216fold
+221,222fold
+218,224fold
+206,224fold
+228,230fold
+236,237fold
+235,237fold
+239,240fold
+238,240fold
+227,241fold
+248,249fold
+251,252fold
+254,255fold
+244,255fold
+258,262fold
+276,277fold
+281,284fold
+285,286fold
+265,288fold
+290,291fold
+304,305fold
+300,305fold
+312,314fold
+317,318fold
+323,325fold
+332,333fold
+330,333fold
+340,342fold
+345,346fold
+357,358fold
+352,358fold
+363,364fold
+366,367fold
+369,370fold
+372,373fold
+375,376fold
+378,379fold
+381,382fold
+387,388fold
+390,391fold
+396,397fold
+399,400fold
+402,403fold
+408,409fold
+411,412fold
+414,415fold
+420,421fold
+423,424fold
+426,427fold
+429,430fold
+432,433fold
+435,436fold
+438,439fold
+444,445fold
+447,448fold
+450,451fold
+458,459fold
+461,462fold
+464,465fold
+467,468fold
+470,471fold
+473,474fold
+477,478fold
+480,481fold
+483,484fold
+487,488fold
+490,491fold
+493,494fold
+496,497fold
+499,500fold
+503,504fold
+506,507fold
+509,510fold
+512,513fold
+516,517fold
+519,520fold
+522,523fold
+525,526fold
+529,530fold
+532,533fold
+536,537fold
+539,540fold
+544,545fold
+550,552fold
+553,554fold
+561,563fold
+564,565fold
+571,572fold
+573,574fold
+593,594fold
+598,599fold
+601,608fold
+611,612fold
+614,615fold
+609,616fold
+626,627fold
+631,632fold
+633,634fold
+638,639fold
+640,641fold
+642,643fold
+648,649fold
+650,651fold
+647,651fold
+656,657fold
+658,659fold
+655,659fold
+667,668fold
+669,670fold
+674,675fold
+676,677fold
+678,679fold
+683,684fold
+685,686fold
+687,688fold
+692,693fold
+694,695fold
+696,697fold
+698,699fold
+740,741fold
+743,744fold
+746,747fold
+736,747fold
+770,777fold
+let &fdl = &fdl
+let s:l = 608 - ((10 * winheight(0) + 12) / 24)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 608
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/dev/configs/tester.py", ":p")) | buffer ~/dev/configs/tester.py | else | edit ~/dev/configs/tester.py | endif
+if &buftype ==# 'terminal'
+  silent file ~/dev/configs/tester.py
+endif
+balt ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/python.snippets
+let s:cpo_save=&cpo
+set cpo&vim
+nnoremap <buffer> <silent> \pÞ <Nop>
+xnoremap <buffer> <silent> af <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@call.outer','textobjects','x')
+onoremap <buffer> <silent> af <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@call.outer','textobjects','o')
+xnoremap <buffer> <silent> aa <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@parameter.outer','textobjects','x')
+onoremap <buffer> <silent> aa <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@parameter.outer','textobjects','o')
+xnoremap <buffer> <silent> am <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.outer','textobjects','x')
+onoremap <buffer> <silent> am <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.outer','textobjects','o')
+xnoremap <buffer> <silent> ai <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@conditional.outer','textobjects','x')
+onoremap <buffer> <silent> ai <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@conditional.outer','textobjects','o')
+xnoremap <buffer> <silent> a= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.outer','textobjects','x')
+onoremap <buffer> <silent> a= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.outer','textobjects','o')
+xnoremap <buffer> <silent> ac <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.outer','textobjects','x')
+onoremap <buffer> <silent> ac <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.outer','textobjects','o')
+xnoremap <buffer> <silent> al <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@loop.outer','textobjects','x')
+onoremap <buffer> <silent> al <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@loop.outer','textobjects','o')
+xnoremap <buffer> <silent> il <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@loop.inner','textobjects','x')
+onoremap <buffer> <silent> il <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@loop.inner','textobjects','o')
+xnoremap <buffer> <silent> ia <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@parameter.inner','textobjects','x')
+onoremap <buffer> <silent> ia <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@parameter.inner','textobjects','o')
+xnoremap <buffer> <silent> ii <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@conditional.inner','textobjects','x')
+onoremap <buffer> <silent> ii <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@conditional.inner','textobjects','o')
+xnoremap <buffer> <silent> im <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.inner','textobjects','x')
+onoremap <buffer> <silent> im <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.inner','textobjects','o')
+xnoremap <buffer> <silent> if <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@call.inner','textobjects','x')
+onoremap <buffer> <silent> if <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@call.inner','textobjects','o')
+xnoremap <buffer> <silent> i= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.inner','textobjects','x')
+onoremap <buffer> <silent> i= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.inner','textobjects','o')
+xnoremap <buffer> <silent> ic <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.inner','textobjects','x')
+onoremap <buffer> <silent> ic <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.inner','textobjects','o')
+xnoremap <buffer> <silent> l= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.lhs','textobjects','x')
+onoremap <buffer> <silent> l= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.lhs','textobjects','o')
+xnoremap <buffer> <silent> r= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.rhs','textobjects','x')
+onoremap <buffer> <silent> r= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.rhs','textobjects','o')
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=b:#,fb:-
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t
+setlocal completefunc=
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal nocopyindent
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=^\\s*\\(\\(async\\s\\+\\)\\?def\\|class\\)
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'python'
+setlocal filetype=python
+endif
+setlocal fillchars=fold:\ 
+setlocal fixendofline
+setlocal foldcolumn=1
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=v:lua.require'ufo.main'.foldtext()
+setlocal formatexpr=v:lua.require'conform'.formatexpr()
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=tcqj
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=^\\s*\\(from\\|import\\)
+setlocal includeexpr=substitute(substitute(substitute(v:fname,b:grandparent_match,b:grandparent_sub,''),b:parent_match,b:parent_sub,''),b:child_match,b:child_sub,'g')
+setlocal indentexpr=python#GetIndent(v:lnum)
+setlocal indentkeys=0{,0},0),0],:,!^F,o,O,e,<:>,=elif,=except
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=python3\ -m\ pydoc
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispoptions=
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=v:lua.vim.lsp.omnifunc
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal relativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal scrollback=-1
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal nosmoothscroll
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\\t\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=noplainbuffer
+setlocal statuscolumn=
+setlocal statusline=%<%#lualine_c_inactive#\ tester.py\ [+]\ %#lualine_c_inactive#%=%#lualine_c_inactive#\ \ 23:1\ \ 
+setlocal suffixesadd=.py
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != ''
+setlocal syntax=
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=v:lua.vim.lsp.tagfunc
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal winbar=
+setlocal winblend=0
+setlocal nowinfixbuf
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal winhighlight=
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+4,5fold
+8,9fold
+16,22fold
+15,25fold
+12,25fold
+29,30fold
+34,36fold
+33,36fold
+32,36fold
+28,36fold
+40,42fold
+44,46fold
+39,46fold
+49,50fold
+let &fdl = &fdl
+let s:l = 23 - ((10 * winheight(0) + 11) / 23)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 23
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/dev/configs/tester.py", ":p")) | buffer ~/dev/configs/tester.py | else | edit ~/dev/configs/tester.py | endif
+if &buftype ==# 'terminal'
+  silent file ~/dev/configs/tester.py
+endif
+balt ~/.local/share/nvim/lazy/vim-snippets/UltiSnips/python.snippets
+let s:cpo_save=&cpo
+set cpo&vim
+nnoremap <buffer> <silent> \pÞ <Nop>
+xnoremap <buffer> <silent> af <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@call.outer','textobjects','x')
+onoremap <buffer> <silent> af <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@call.outer','textobjects','o')
+xnoremap <buffer> <silent> aa <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@parameter.outer','textobjects','x')
+onoremap <buffer> <silent> aa <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@parameter.outer','textobjects','o')
+xnoremap <buffer> <silent> am <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.outer','textobjects','x')
+onoremap <buffer> <silent> am <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.outer','textobjects','o')
+xnoremap <buffer> <silent> ai <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@conditional.outer','textobjects','x')
+onoremap <buffer> <silent> ai <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@conditional.outer','textobjects','o')
+xnoremap <buffer> <silent> a= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.outer','textobjects','x')
+onoremap <buffer> <silent> a= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.outer','textobjects','o')
+xnoremap <buffer> <silent> ac <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.outer','textobjects','x')
+onoremap <buffer> <silent> ac <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.outer','textobjects','o')
+xnoremap <buffer> <silent> al <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@loop.outer','textobjects','x')
+onoremap <buffer> <silent> al <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@loop.outer','textobjects','o')
+xnoremap <buffer> <silent> il <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@loop.inner','textobjects','x')
+onoremap <buffer> <silent> il <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@loop.inner','textobjects','o')
+xnoremap <buffer> <silent> ia <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@parameter.inner','textobjects','x')
+onoremap <buffer> <silent> ia <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@parameter.inner','textobjects','o')
+xnoremap <buffer> <silent> ii <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@conditional.inner','textobjects','x')
+onoremap <buffer> <silent> ii <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@conditional.inner','textobjects','o')
+xnoremap <buffer> <silent> im <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.inner','textobjects','x')
+onoremap <buffer> <silent> im <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.inner','textobjects','o')
+xnoremap <buffer> <silent> if <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@call.inner','textobjects','x')
+onoremap <buffer> <silent> if <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@call.inner','textobjects','o')
+xnoremap <buffer> <silent> i= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.inner','textobjects','x')
+onoremap <buffer> <silent> i= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.inner','textobjects','o')
+xnoremap <buffer> <silent> ic <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.inner','textobjects','x')
+onoremap <buffer> <silent> ic <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.inner','textobjects','o')
+xnoremap <buffer> <silent> l= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.lhs','textobjects','x')
+onoremap <buffer> <silent> l= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.lhs','textobjects','o')
+xnoremap <buffer> <silent> r= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.rhs','textobjects','x')
+onoremap <buffer> <silent> r= <Cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@assignment.rhs','textobjects','o')
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=b:#,fb:-
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t
+setlocal completefunc=
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal nocopyindent
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=^\\s*\\(\\(async\\s\\+\\)\\?def\\|class\\)
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'python'
+setlocal filetype=python
+endif
+setlocal fillchars=fold:\ 
+setlocal fixendofline
+setlocal foldcolumn=1
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=v:lua.require'ufo.main'.foldtext()
+setlocal formatexpr=v:lua.require'conform'.formatexpr()
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=tcqj
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=^\\s*\\(from\\|import\\)
+setlocal includeexpr=substitute(substitute(substitute(v:fname,b:grandparent_match,b:grandparent_sub,''),b:parent_match,b:parent_sub,''),b:child_match,b:child_sub,'g')
+setlocal indentexpr=python#GetIndent(v:lnum)
+setlocal indentkeys=0{,0},0),0],:,!^F,o,O,e,<:>,=elif,=except
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=python3\ -m\ pydoc
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispoptions=
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=v:lua.vim.lsp.omnifunc
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal relativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal scrollback=-1
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal nosmoothscroll
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\\t\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=noplainbuffer
+setlocal statuscolumn=
+setlocal statusline=%#lualine_a_normal#\ NORMAL\ %#lualine_transitional_lualine_a_normal_to_lualine_b_normal#%#lualine_b_normal#\ \ main\ %#lualine_b_diff_added_normal#\ +21\ %#lualine_b_diff_modified_normal#~4\ %#lualine_transitional_lualine_b_diff_modified_normal_to_lualine_c_normal#%<%#lualine_c_normal#\ tester.py\ [+]\ %#lualine_c_normal#\ \ LSP:\ pyright\ %#lualine_c_normal#\ snip\ %#lualine_c_normal#%=%#lualine_c_normal#\ utf-8\ %#lualine_c_normal#\ \ %#lualine_x_filetype_DevIconPy_normal#\ \ %#lualine_c_normal#python\ %#lualine_c_normal#%#lualine_c_normal#\ 824b\ %#lualine_transitional_lualine_b_normal_to_lualine_c_normal#%#lualine_b_normal#\ 48%%\ %#lualine_transitional_lualine_a_normal_to_lualine_b_normal#%#lualine_a_normal#\ \ 24:3\ \ 
+setlocal suffixesadd=.py
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != ''
+setlocal syntax=
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=v:lua.vim.lsp.tagfunc
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal winbar=
+setlocal winblend=0
+setlocal nowinfixbuf
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal winhighlight=
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+4,5fold
+8,9fold
+16,22fold
+15,25fold
+12,25fold
+29,30fold
+34,36fold
+33,36fold
+32,36fold
+28,36fold
+40,42fold
+44,46fold
+39,46fold
+49,50fold
+let &fdl = &fdl
+12
+normal! zo
+15
+normal! zo
+let s:l = 24 - ((11 * winheight(0) + 11) / 23)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 24
+normal! 03|
+wincmd w
+4wincmd w
+exe '1resize ' . ((&lines * 22 + 25) / 50)
+exe 'vert 1resize ' . ((&columns * 110 + 104) / 208)
+exe '2resize ' . ((&lines * 24 + 25) / 50)
+exe 'vert 2resize ' . ((&columns * 110 + 104) / 208)
+exe '3resize ' . ((&lines * 23 + 25) / 50)
+exe 'vert 3resize ' . ((&columns * 97 + 104) / 208)
+exe '4resize ' . ((&lines * 23 + 25) / 50)
+exe 'vert 4resize ' . ((&columns * 97 + 104) / 208)
+tabnext 1
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20
+let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &g:so = s:so_save | let &g:siso = s:siso_save
+set hlsearch
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
