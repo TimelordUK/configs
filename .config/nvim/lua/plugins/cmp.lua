@@ -56,6 +56,7 @@ return {
 		{
 			"quangnguyen30192/cmp-nvim-ultisnips",
 			init = function()
+				vim.g.UltiSnipsListSnippets = "<c-x>"
 				vim.g.UltiSnipsJumpForwardTrigger = "<c-j>"
 				vim.g.UltiSnipsJumpBackwardTrigger = "<c-k>"
 				-- vim.g.UltiSnipsEditSplit = "horizontal"
