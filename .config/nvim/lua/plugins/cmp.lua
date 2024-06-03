@@ -21,7 +21,11 @@ return {
 			dependencies = { "nvim-tree/nvim-web-devicons" },
 			init = function()
 				require("oil").setup()
-				vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+				local wk = require("which-key")
+				wk.register({
+					name = ".oil",
+					["-"] = { "<CMD>Oil<CR>", "open oil parent" },
+				})
 			end,
 		},
 		{
@@ -29,7 +33,12 @@ return {
 			version = "*",
 			init = function()
 				require("mini.files").setup()
-				vim.keymap.set("n", "<leader>-", "<CMD>lua MiniFiles.open()<CR>", { desc = "Open mini" })
+				local wk = require("which-key")
+				wk.register({
+					name = ".mini",
+					["-"] = { "<CMD>lua MiniFiles.open()<CR>", "open mini" },
+					prefix = "<leader>",
+				})
 			end,
 		},
 		{ "hrsh7th/cmp-nvim-lsp" },
