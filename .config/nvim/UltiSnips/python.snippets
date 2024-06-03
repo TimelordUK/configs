@@ -1,7 +1,7 @@
 # ${1|item1,item2,item3,...|}
 snippet rwp "Read Write Property" b
 @property
-def ${1:name}(self) -> ${2|int,float,list,dict,datetime,bool,ClassName|}:
+def ${1:name}(self) -> ${2|str,int,float,list,dict,datetime,bool,ClassName|}:
 	${3:return self._$1}$0
 
 @$1.setter
