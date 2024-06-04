@@ -15,6 +15,53 @@ return {
 			},
 		},
 		{
+			"echasnovski/mini.files",
+			version = "*",
+			init = function()
+				require("mini.files").setup()
+				local wk = require("which-key")
+				wk.register({
+					name = ".mini",
+					["-"] = { "<CMD>lua MiniFiles.open()<CR>", "open mini" },
+					prefix = "<leader>",
+				})
+			end,
+		},
+		{
+			"echasnovski/mini.move",
+			version = "*",
+			init = function()
+				require("mini.move").setup({
+					-- Module mappings. Use `''` (empty string) to disable one.
+					mappings = {
+						-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+						left = "<M-h>",
+						right = "<M-l>",
+						down = "<M-j>",
+						up = "<M-k>",
+
+						-- Move current line in Normal mode alt-shift j,k,l,h
+						line_left = "<M-H>",
+						line_right = "<M-L>",
+						line_down = "<M-J>",
+						line_up = "<M-K>",
+					},
+
+					-- Options which control moving behavior
+					options = {
+						-- Automatically reindent selection during linewise vertical move
+						reindent_linewise = true,
+					},
+				})
+				local wk = require("which-key")
+				-- wk.register({
+				-- 	name = ".mini",
+				-- 	["-"] = { "<CMD>lua MiniFiles.open()<CR>", "open mini" },
+				-- 	prefix = "<leader>",
+				-- })
+			end,
+		},
+		{
 			"stevearc/oil.nvim",
 			opts = {},
 			-- Optional dependencies
@@ -25,19 +72,6 @@ return {
 				wk.register({
 					name = ".oil",
 					["-"] = { "<CMD>Oil<CR>", "open oil parent" },
-				})
-			end,
-		},
-		{
-			"echasnovski/mini.files",
-			version = "*",
-			init = function()
-				require("mini.files").setup()
-				local wk = require("which-key")
-				wk.register({
-					name = ".mini",
-					["-"] = { "<CMD>lua MiniFiles.open()<CR>", "open mini" },
-					prefix = "<leader>",
 				})
 			end,
 		},
