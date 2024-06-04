@@ -10,7 +10,11 @@ return {
 						"SmiteshP/nvim-navic",
 						"MunifTanjim/nui.nvim",
 					},
-					opts = { lsp = { auto_attach = true } },
+					opts = {
+						lsp = {
+							auto_attach = true,
+						},
+					},
 				},
 			},
 		},
@@ -43,8 +47,14 @@ return {
 		},
 		{
 			"Wansmer/treesj",
-			keys = { "<space>m", "<space>j", "<space>s" },
-			dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
+			keys = {
+				"<space>m",
+				"<space>j",
+				"<space>s",
+			},
+			dependencies = {
+				"nvim-treesitter/nvim-treesitter",
+			}, -- if you install parsers with `nvim-treesitter`
 			config = function()
 				require("treesj").setup({ --[[ your config ]]
 				})
@@ -58,7 +68,10 @@ return {
 				local wk = require("which-key")
 				wk.register({
 					name = ".mini",
-					["-"] = { "<CMD>lua MiniFiles.open()<CR>", "open mini" },
+					["-"] = {
+						"<CMD>lua MiniFiles.open()<CR>",
+						"open mini",
+					},
 					prefix = "<leader>",
 				})
 			end,
@@ -95,13 +108,18 @@ return {
 			"stevearc/oil.nvim",
 			opts = {},
 			-- Optional dependencies
-			dependencies = { "nvim-tree/nvim-web-devicons" },
+			dependencies = {
+				"nvim-tree/nvim-web-devicons",
+			},
 			init = function()
 				require("oil").setup()
 				local wk = require("which-key")
 				wk.register({
 					name = ".oil",
-					["-"] = { "<CMD>Oil<CR>", "open oil parent" },
+					["-"] = {
+						"<CMD>Oil<CR>",
+						"open oil parent",
+					},
 				})
 			end,
 		},
@@ -214,7 +232,10 @@ return {
 				callback = function()
 					start_lsp({
 						name = "vscode-json-languageserver",
-						cmd = { "vscode-json-languageserver", "--stdio" },
+						cmd = {
+							"vscode-json-languageserver",
+							"--stdio",
+						},
 					})
 				end,
 			})
@@ -224,7 +245,9 @@ return {
 				callback = function()
 					start_lsp({
 						name = "marksman",
-						cmd = { "marksman" },
+						cmd = {
+							"marksman",
+						},
 					})
 				end,
 			})
@@ -251,17 +274,35 @@ return {
 					g = {
 						name = ".lsp", -- optional group name
 						-- Jump to the definition
-						d = { vim.lsp.buf.definition, "jump definition" },
+						d = {
+							vim.lsp.buf.definition,
+							"jump definition",
+						},
 						-- Jump to declaration
-						D = { vim.lsp.buf.declaration, "jump declaration" },
+						D = {
+							vim.lsp.buf.declaration,
+							"jump declaration",
+						},
 						-- Lists all the implementations for the symbol under the cursor
-						i = { vim.lsp.buf.implementation, "list implementations" },
+						i = {
+							vim.lsp.buf.implementation,
+							"list implementations",
+						},
 						-- Show diagnostics in a floating window
-						l = { vim.diagnostic.open_float, "diag in float" },
+						l = {
+							vim.diagnostic.open_float,
+							"diag in float",
+						},
 						-- Jumps to the definition of the type symbol
-						o = { vim.lsp.buf.type_definition, "jump type symbol" },
+						o = {
+							vim.lsp.buf.type_definition,
+							"jump type symbol",
+						},
 						-- Lists all the references
-						r = { vim.lsp.buf.references, "list references" },
+						r = {
+							vim.lsp.buf.references,
+							"list references",
+						},
 					},
 				})
 
@@ -271,15 +312,30 @@ return {
 					-- Display documentation of the symbol under the cursor
 					K = { vim.lsp.buf.hover, "hover symbol" },
 					-- Renames all references to the symbol under the cursor
-					["<F2>"] = { vim.lsp.buf.rename, "rename symbol" },
+					["<F2>"] = {
+						vim.lsp.buf.rename,
+						"rename symbol",
+					},
 					-- Format current file
-					["<F3>"] = { vim.lsp.buf.format, "reformat" },
+					["<F3>"] = {
+						vim.lsp.buf.format,
+						"reformat",
+					},
 					-- Selects a code action available at the current cursor position
-					["<F4>"] = { vim.lsp.buf.code_action, "code action" },
+					["<F4>"] = {
+						vim.lsp.buf.code_action,
+						"code action",
+					},
 					-- Move to the previous diagnostic
-					["[d"] = { vim.diagnostic.goto_prev, "prev diag" },
+					["[d"] = {
+						vim.diagnostic.goto_prev,
+						"prev diag",
+					},
 					-- Move to the next diagnostic
-					["]d"] = { vim.diagnostic.goto_next, "goto diag" },
+					["]d"] = {
+						vim.diagnostic.goto_next,
+						"goto diag",
+					},
 				})
 			end
 			local function bind_lsp(event)
@@ -352,7 +408,9 @@ return {
 			}, {
 				{ name = "cmdline" },
 			}),
-			matching = { disallow_symbol_nonprefix_matching = false },
+			matching = {
+				disallow_symbol_nonprefix_matching = false,
+			},
 		})
 		lsps()
 
