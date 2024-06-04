@@ -15,6 +15,13 @@ return {
 			},
 		},
 		{
+			"windwp/nvim-autopairs",
+			event = "InsertEnter",
+			config = true,
+			-- use opts = {} for passing setup options
+			-- this is equalent to setup({}) function
+		},
+		{
 			--     Old text                    Command         New text
 			-- --------------------------------------------------------------------------------
 			--     surr*ound_words             ysiw)           (surround_words)
@@ -31,6 +38,15 @@ return {
 			config = function()
 				require("nvim-surround").setup({
 					-- Configuration here, or leave empty to use defaults
+				})
+			end,
+		},
+		{
+			"Wansmer/treesj",
+			keys = { "<space>m", "<space>j", "<space>s" },
+			dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
+			config = function()
+				require("treesj").setup({ --[[ your config ]]
 				})
 			end,
 		},
@@ -73,12 +89,6 @@ return {
 						reindent_linewise = true,
 					},
 				})
-				local wk = require("which-key")
-				-- wk.register({
-				-- 	name = ".mini",
-				-- 	["-"] = { "<CMD>lua MiniFiles.open()<CR>", "open mini" },
-				-- 	prefix = "<leader>",
-				-- })
 			end,
 		},
 		{
