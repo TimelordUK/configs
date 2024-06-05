@@ -26,6 +26,14 @@ return {
 			-- this is equalent to setup({}) function
 		},
 		{
+			"ggandor/leap.nvim",
+			opts = {},
+			-- Optional dependencies
+			config = function()
+				require("leap").create_default_mappings()
+			end,
+		},
+		{
 			--     Old text                    Command         New text
 			-- --------------------------------------------------------------------------------
 			--     surr*ound_words             ysiw)           (surround_words)
@@ -227,18 +235,21 @@ return {
 				end)
 			end
 
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = "json",
-				callback = function()
-					start_lsp({
-						name = "vscode-json-languageserver",
-						cmd = {
-							"vscode-json-languageserver",
-							"--stdio",
-						},
-					})
-				end,
-			})
+			lspconf.jsonls.setup(capabilities)
+
+			-- vim.api.nvim_create_autocmd("FileType", {
+			-- 	pattern = "json",
+			-- 	callback = function()
+			-- 		start_lsp({
+			-- 			name = "vscode-json-languageserver",
+			-- 			cmd = {
+			-- 				"vscode-json-languageserver",
+			-- 				"--stdio",
+			-- 			},
+			-- 		})
+			-- 	end,
+			-- })
+			--
 
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = "markdown",
