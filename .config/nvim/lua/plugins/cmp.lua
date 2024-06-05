@@ -229,40 +229,8 @@ return {
 				},
 			})
 
-			local function start_lsp(cfg)
-				vim.schedule(function()
-					vim.lsp.start(cfg)
-				end)
-			end
-
 			lspconf.jsonls.setup(capabilities)
-
-			-- vim.api.nvim_create_autocmd("FileType", {
-			-- 	pattern = "json",
-			-- 	callback = function()
-			-- 		start_lsp({
-			-- 			name = "vscode-json-languageserver",
-			-- 			cmd = {
-			-- 				"vscode-json-languageserver",
-			-- 				"--stdio",
-			-- 			},
-			-- 		})
-			-- 	end,
-			-- })
-			--
-
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = "markdown",
-				callback = function()
-					start_lsp({
-						name = "marksman",
-						cmd = {
-							"marksman",
-						},
-					})
-				end,
-			})
-
+			lspconf.marksman.setup(capabilities)
 			lspconf.pyright.setup(capabilities)
 			lspconf.tsserver.setup(capabilities)
 			lspconf.nushell.setup(capabilities)
