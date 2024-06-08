@@ -1,0 +1,1 @@
+/home/me/miniconda3/envs/krypton/lib/python3.12/site-packages/ranger_tmux/plugin.py
