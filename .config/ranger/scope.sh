@@ -152,9 +152,11 @@ handle_image() {
     # Preview as text conversion
     # img2txt --gamma=0.6 --width="${PV_WIDTH}" -- "${FILE_PATH}" && exit 4
     # chafa -s ${PV_WIDTH}x{PV_HEIGHT} -c full "${FILE_PATH}" && exit 0
-    chafa -c full "${FILE_PATH}" && exit 0
+    # chafa -c full "${FILE_PATH}" && exit 0
     #chafa -c 240 "${FILE_PATH}" && exit 0
     # chafa -s ${PV_WIDTH}x{PV_HEIGHT} -f sixel "${FILE_PATH}" | sed 's/#/\n#/g' && exit 0
+    # chafa -c 256 -s "${PV_WIDTH}x${PV_HEIGHT}" "${FILE_PATH}"
+    chafa --size="${PV_WIDTH}x${PV_HEIGHT}" --colors 256 --symbols=ascii "${FILE_PATH}" && exit 5
     mediainfo "${FILE_PATH}" && exit 0
     exiftool "${FILE_PATH}" && exit 0
     exit 0
