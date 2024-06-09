@@ -16,6 +16,7 @@ if [ "$TERM_PROGRAM" = tmux ]; then
       export TERM=screen-256color
 fi
 
+eval "$(batpipe)"
 export EDITOR=nvim
 autoload -U compinit; compinit
 autoload -U promptinit
