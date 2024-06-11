@@ -16,7 +16,6 @@ if [ "$TERM_PROGRAM" = tmux ]; then
       export TERM=screen-256color
 fi
 
-eval "$(batpipe)"
 export EDITOR=nvim
 autoload -U compinit; compinit
 autoload -U promptinit
@@ -46,6 +45,7 @@ zvm_config() {
 export PATH=$PATH:~/opt/local/bin:/usr/local/go/bin:$HOME/go/bin:$HOME/.local/bin
 export ZDOTDIR=$HOME/.zsh
 source $ZDOTDIR/.antidote/antidote.zsh
+eval "$(batpipe)"
 
 antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 
