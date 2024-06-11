@@ -38,3 +38,9 @@ Thumbs.db
 
 */**/*.log
 */**/tmp.txt
+__pycache__
+.config/ranger/plugins/ranger_fzf_filter
+.config/ranger/plugins/ranger_devicons
+.config/ranger/plugins/ranger-zoxide
+.config/ranger/plugins
+.config/ranger/colorschemes

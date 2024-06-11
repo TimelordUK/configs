@@ -110,6 +110,7 @@ HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 bindkey '^[[A' history-substring-search-up # or '\eOA'
 bindkey '^[[B' history-substring-search-down # or '\eOB'
 
+alias idea=~/opt/idea-IU-241.17011.79/bin/idea.sh
 alias config="vim ~/.zshrc"
 alias rhp=". ~/.zshrc"
 alias reload=". ~/.zshrc"
