@@ -6,5 +6,5 @@ zsh-users/zsh-completions
 jeffreytse/zsh-vi-mode
 lukechilds/zsh-nvm
 romkatv/powerlevel10k
-#zdharma-continuum/fast-syntax-highlighting
-zsh-users/zsh-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting
+#zsh-users/zsh-syntax-highlighting
