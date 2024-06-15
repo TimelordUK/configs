@@ -880,3 +880,5 @@ use custom-completions/make/make-completions.nu *
 use custom-completions/curl/curl-completions.nu *
 use custom-completions/tar/tar-completions.nu *   
 use custom-completions/yarn/yarn-v4-completions.nu *
+
+use '/home/me/.config/broot/launcher/nushell/br' *

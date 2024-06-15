@@ -42,12 +42,13 @@ zvm_config() {
   ZVM_NORMAL_MODE_CURSOR=$ncur'\e\e]12;#a89984\a'
 }
 
-export PATH=$PATH:~/opt/local/bin:/usr/local/go/bin:$HOME/go/bin:$HOME/.local/bin
+export PATH=$PATH:~/opt/local/bin:/usr/local/go/bin:$HOME/go/bin:$HOME/.local/bin:~/.fzf/bin
 export ZDOTDIR=$HOME/.zsh
 source $ZDOTDIR/.antidote/antidote.zsh
 eval "$(batpipe)"
-
 antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets pattern cursor)
 
 # History command configuration
 setopt extended_history       # record timestamp of command in HISTFILE
@@ -114,7 +115,7 @@ alias idea=~/opt/idea-IU-241.17011.79/bin/idea.sh
 alias config="vim ~/.zshrc"
 alias rhp=". ~/.zshrc"
 alias reload=". ~/.zshrc"
-alias ll="eza --grid -long -a --time-style=relative -s modified --extended --header --dereference"
+alias ll="eza --icons always --grid -long -a --time-style=relative -s modified --extended --header --dereference"
 alias lt="eza --tree --long"
 alias fzfp="fzf --preview 'bat --color=always {}' --preview-window '~3'"
 alias tmuxsess='tmuxp load ~/dev/configs/.config/tmux/tmuxsess.yaml'
@@ -145,3 +146,5 @@ PERL5LIB="${HOME}/g/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="${HOME}/g/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"${HOME}/g/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=${HOME}/g/perl5"; export PERL_MM_OPT;
+
+source /home/me/.config/broot/launcher/bash/br
