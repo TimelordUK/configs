@@ -23,6 +23,7 @@ export COLORTERM=24bit
 export NVM_COMPLETION=true
 . "$HOME/.cargo/env"
 export NAVI_PATH=$HOME/.navi:$HOME/.local/share/navi/cheats
+export QHOME=$HOME
 
 ## History file configuration
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
