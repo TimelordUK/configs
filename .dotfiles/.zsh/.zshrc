@@ -19,6 +19,7 @@ fi
 export EDITOR=nvim
 autoload -U compinit; compinit
 autoload -U promptinit
+export COLORTERM=24bit
 export NVM_COMPLETION=true
 . "$HOME/.cargo/env"
 export NAVI_PATH=$HOME/.navi:$HOME/.local/share/navi/cheats
@@ -139,6 +140,14 @@ bindkey -r '^r'
 bindkey '^r' atuin-search
 bindkey '^z' atuin-up-search
 eval "$(luarocks path --lua-version 5.4)"
+
+_pipr_expand_widget() {
+  emulate -LR zsh
+  </dev/tty pipr --out-file /tmp/pipr_out --default "$LBUFFER" >/dev/null
+  LBUFFER=$(< /tmp/pipr_out)
+}
+zle -N _pipr_expand_widget
+bindkey '^[a' _pipr_expand_widget
 
 
 PATH="${HOME}/g/perl5/bin${PATH:+:${PATH}}"; export PATH;
