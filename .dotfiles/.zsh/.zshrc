@@ -44,10 +44,10 @@ zvm_config() {
   ZVM_NORMAL_MODE_CURSOR=$ncur'\e\e]12;#a89984\a'
 }
 
-export PATH=$PATH:~/opt/local/bin:/usr/local/go/bin:$HOME/go/bin:$HOME/.local/bin:~/.fzf/bin
+export PATH=~/opt/local/bin:$PATH:/usr/local/go/bin:$HOME/go/bin:$HOME/.local/bin:~/.fzf/bin
 export ZDOTDIR=$HOME/.zsh
+# eval "$(batpipe)"
 source $ZDOTDIR/.antidote/antidote.zsh
-eval "$(batpipe)"
 antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets pattern cursor)
@@ -140,7 +140,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 bindkey -r '^r' 
 bindkey '^r' atuin-search
 bindkey '^z' atuin-up-search
-eval "$(luarocks path --lua-version 5.4)"
+# eval "$(luarocks path --lua-version 5.4)"
 
 _pipr_expand_widget() {
   emulate -LR zsh
@@ -157,4 +157,12 @@ PERL_LOCAL_LIB_ROOT="${HOME}/g/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROO
 PERL_MB_OPT="--install_base \"${HOME}/g/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=${HOME}/g/perl5"; export PERL_MM_OPT;
 
-source /home/me/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias luamake="/home/jamesste/dev/src/lua-language-server/3rd/luamake/luamake"
+
+source /home/jamesste/.config/broot/launcher/bash/br

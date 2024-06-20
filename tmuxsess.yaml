@@ -5,6 +5,8 @@ windows:
     focus: true
     panes:
       - shell_command:
+          - antidote update
+          - dysk
           - macchina
         focus: True
     shell_command_before:

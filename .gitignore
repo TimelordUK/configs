@@ -44,3 +44,5 @@ __pycache__
 .config/ranger/plugins/ranger-zoxide
 .config/ranger/plugins
 .config/ranger/colorschemes
+.dotfiles/.zsh/.zsh_plugins.zsh
+.dotfiles/.zsh/.zcompdump

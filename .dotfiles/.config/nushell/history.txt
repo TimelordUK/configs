@@ -1,0 +1,43 @@
+exit
+clear
+exit
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
+exit
+mkdir ~/.local/share/atuin/
+atuin init nu | save -f ~/.local/share/atuin/init.nu
+exit
+nvim ~/.config/nushell/config.nu
+cd
+cd dev
+cd src
+git clone https://github.com/nushell/nu_scripts.git
+mkdir nu
+mv nu_scripts/ nu
+exit
+broot
+exit
+nvim /home/jamesste/.config/nushell/config.nu
+exit
+config nu --default
+config nu --defaulta | bat
+config nu --default | bat
+exit
+ERROR: Failed to find $ATUIN_SESSION in the environment. Check that you have correctly set up your shell.
+exit
+config nu --default | bat
+nvim /home/jamesste/.config/nushell/config.nu
+mv /home/jamesste/.config/nushell/config.nu /
+mv /home/jamesste/.config/nushell/config.nu ~/.config/nushell/config.nu.save
+exit
+nu config --default
+exit
+mv /home/jamesste/.config/nushell/config.nu.save ~/.config/nushell/config.nu
+exit
+config nu --default | save  /home/jamesste/.config/nushell/config.nu
+config nu --default | save -f /home/jamesste/.config/nushell/config.nu
+exit
+nvim /home/jamesste/.config/nushell/config.nu
+exit
+config nu --default
+exit
