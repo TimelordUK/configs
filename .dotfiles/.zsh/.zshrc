@@ -165,4 +165,4 @@ export NVM_DIR="$HOME/.nvm"
 
 alias luamake="/home/jamesste/dev/src/lua-language-server/3rd/luamake/luamake"
 
-source /home/jamesste/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br
