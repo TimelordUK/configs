@@ -16,6 +16,15 @@ if [ "$TERM_PROGRAM" = tmux ]; then
       export TERM=screen-256color
 fi
 
+export LESSOPEN="|$HOME/dev/src/bat-extras/bin/batpipe %s"
+export LESSOPEN
+unset LESSCLOSE
+
+LESS="$LESS -R"
+BATPIPE="color"
+export LESS
+export BATPIPE
+
 export EDITOR=nvim
 autoload -U compinit; compinit
 autoload -U promptinit
@@ -163,6 +172,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-alias luamake="/home/jamesste/dev/src/lua-language-server/3rd/luamake/luamake"
+alias luamake="$HOME/dev/src/lua-language-server/3rd/luamake/luamake"
 
 source $HOME/.config/broot/launcher/bash/br
