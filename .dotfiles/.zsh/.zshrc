@@ -117,6 +117,7 @@ alias idea=~/opt/idea-IU-241.17011.79/bin/idea.sh
 alias config="vim ~/.zshrc"
 alias rhp=". ~/.zshrc"
 alias reload=". ~/.zshrc"
+alias lm='eza -al --sort=modified --icons always'
 alias ll="eza --icons always --grid -long -a --time-style=relative -s modified --extended --header --dereference"
 alias lt="eza --tree --long"
 alias fzfp="fzf --preview 'bat --color=always {}' --preview-window '~3'"
