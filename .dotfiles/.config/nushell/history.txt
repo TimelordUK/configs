@@ -41,3 +41,7 @@ nvim /home/jamesste/.config/nushell/config.nu
 exit
 config nu --default
 exit
+nu plugin add nu_plugin_polars
+nu add nu_plugin_polars
+nu plugin add polars
+exit
