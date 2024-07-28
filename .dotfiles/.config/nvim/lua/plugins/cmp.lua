@@ -121,12 +121,8 @@ return {
 			init = function()
 				require("oil").setup()
 				local wk = require("which-key")
-				wk.register({
-					name = ".oil",
-					["-"] = {
-						"<CMD>Oil<CR>",
-						"open oil parent",
-					},
+				wk.add({
+					{ "-", "<CMD>Oil<CR>", desc = "open oil parent" },
 				})
 			end,
 		},
