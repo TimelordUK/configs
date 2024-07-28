@@ -3,13 +3,11 @@ return {
    config = function()
       --require('smart-splits').setupa({})
       local wk = require("which-key")
-      wk.register({
-         A = {
-            name = ".resize-split", -- optional group name
-            h = { "<cmd>lua ", "grep buffer" },
-         },
-         --prefix = "<leader>",
-      })
+      wk.add(
+         {
+            { "A", group = ".resize-split" },
+         }
+      )
       local ss = require("smart-splits")
       wk.add(
          {
