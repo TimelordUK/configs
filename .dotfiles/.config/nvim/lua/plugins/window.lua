@@ -51,11 +51,9 @@ return {
 			render = "float",
 		})
 		local wk = require("which-key")
-		wk.register({
-			name = ".window",
-			b = { "<cmd>lua require('nvim-window').pick()<CR>", "pick window" },
-		}, {
-			prefix = "<leader>",
+		wk.add({
+			{ "<leader>", group = ".window" },
+			{ "<leader>b", "<cmd>lua require('nvim-window').pick()<CR>", desc = "pick window" },
 		})
 	end,
 }

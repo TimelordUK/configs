@@ -169,10 +169,9 @@ return {
 			},
 			config = function()
 				local wk = require("which-key")
-				wk.register({
-					name = ".neotree", -- optional group name
-					["-"] = { "<cmd>Neotree<CR> ", "neotree" },
-					prefix = "<leader><leader>",
+				wk.add({
+					{ "<leader><leader>", group = ".neotree" },
+					{ "<leader><leader>-", "<cmd>Neotree<CR> ", desc = "neotree" },
 				})
 			end,
 		},
