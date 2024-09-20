@@ -44,9 +44,9 @@ zvm_config() {
   ZVM_NORMAL_MODE_CURSOR=$ncur'\e\e]12;#a89984\a'
 }
 
-export PATH=$HOME/.cabal/bin:$HOME/opt/local/bin:$PATH:/usr/local/go/bin:$HOME/go/bin:$HOME/.local/bin:~/.fzf/bin
+export PATH=$HOME/.local/bin:$HOME/.cabal/bin:$HOME/opt/local/bin:$PATH:/usr/local/go/bin:$HOME/go/bin:~/.fzf/bin
 export ZDOTDIR=$HOME/.zsh
-eval "$(batpipe)"
+#eval "$(batpipe)"
 source $ZDOTDIR/.antidote/antidote.zsh
 antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 
@@ -78,9 +78,9 @@ if [ $? -eq 0 ]; then
   eval "$__conda_setup"
 else
   if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-    . "$HOME/miniconda3/etc/profile.d/conda.sh"
+ . "$HOME/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
   else
-    export PATH="$HOME/miniconda3/bin:$PATH"
+ export PATH="$HOME/miniconda3/bin:$PATH"  # commented out by conda initialize
   fi
 fi
 unset __conda_setup
@@ -167,3 +167,7 @@ export NVM_DIR="$HOME/.nvm"
 alias luamake="$HOME/dev/src/lua-language-server/3rd/luamake/luamake"
 
 source $HOME/.config/broot/launcher/bash/br
+
+source /home/me/.config/broot/launcher/bash/br
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
