@@ -44,7 +44,7 @@ zvm_config() {
   ZVM_NORMAL_MODE_CURSOR=$ncur'\e\e]12;#a89984\a'
 }
 
-export PATH=$HOME/.local/bin:$HOME/.cabal/bin:$HOME/opt/local/bin:$PATH:/usr/local/go/bin:$HOME/go/bin:~/.fzf/bin
+export PATH=$HOME/opt/local/bin:$HOME/.local/bin:$HOME/.cabal/bin:$HOME/opt/local/bin:$PATH:/usr/local/go/bin:$HOME/go/bin:~/.fzf/bin
 export ZDOTDIR=$HOME/.zsh
 #eval "$(batpipe)"
 source $ZDOTDIR/.antidote/antidote.zsh
