@@ -166,4 +166,16 @@ export NVM_DIR="$HOME/.nvm"
 
 alias luamake="$HOME/dev/src/lua-language-server/3rd/luamake/luamake"
 
+# export LUA_PATH=""
+# export LUA_CPATH=""
+
 source $HOME/.config/broot/launcher/bash/br
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}

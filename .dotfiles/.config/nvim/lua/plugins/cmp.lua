@@ -226,7 +226,7 @@ return {
          lspconf.jsonls.setup(capabilities)
          lspconf.marksman.setup(capabilities)
          lspconf.pyright.setup(capabilities)
-         lspconf.tsserver.setup(capabilities)
+         lspconf.ts_ls.setup(capabilities)
          lspconf.nushell.setup(capabilities)
          lspconf.yamlls.setup(capabilities)
          lspconf.gopls.setup(capabilities)
