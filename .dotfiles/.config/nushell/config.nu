@@ -911,3 +911,5 @@ use custom-completions/tar/tar-completions.nu *
 use custom-completions/yarn/yarn-v4-completions.nu *
 
 use '~/.config/broot/launcher/nushell/br' *
+
+use '/home/me/.config/broot/launcher/nushell/br' *
