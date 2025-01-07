@@ -234,6 +234,7 @@ return {
          lspconf.bashls.setup(capabilities)
          lspconf.perlls.setup(capabilities)
          lspconf.clangd.setup(capabilities)
+         lspconf.zls.setup(capabilities)
 
          -- you can add this in your init.lua
          -- (note: diagnostics are not exclusive to LSP)

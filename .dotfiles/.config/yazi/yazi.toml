@@ -4,3 +4,17 @@
   sort_dir_first = true
   sort_by = "mtime"
 
+[opener]
+play = [
+        { run = 'mpv "$@"', orphan = true, for = "unix" },
+        { run = '"C:\Program Files\mpv.exe" %*', orphan = true, for = "windows" }
+]
+edit = [
+        { run = '$EDITOR "$@"', block = true, for = "unix" },
+  { run = 'nvim %*',    block = true, desc = "nvim",           for = "windows" },
+]
+open = [
+  { run = 'nvim %*',    block = true, desc = "nvim",           for = "windows" },
+]
+
+
